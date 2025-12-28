@@ -644,9 +644,22 @@ func tableRow(ds *docState) []*nodes.GridCell {
 		if err != nil {
 			rs = 1
 		}
+		align := nodeAttr(td, "align")
+		if align == "" {
+			// Check style attribute for text-align
+			style := nodeAttr(td, "style")
+			if strings.Contains(style, "text-align:center") || strings.Contains(style, "text-align: center") {
+				align = "center"
+			} else if strings.Contains(style, "text-align:right") || strings.Contains(style, "text-align: right") {
+				align = "right"
+			} else {
+				align = "left"
+			}
+		}
 		cell := &nodes.GridCell{
 			Colspan: cs,
 			Rowspan: rs,
+			Align:   align,
 			Content: nodes.NewListNode(nn...),
 		}
 		row = append(row, cell)

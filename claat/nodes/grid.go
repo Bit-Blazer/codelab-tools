@@ -19,6 +19,7 @@ type GridNode struct {
 type GridCell struct {
 	Colspan int
 	Rowspan int
+	Align   string // "left", "center", "right"
 	Content *ListNode
 }
 

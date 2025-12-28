@@ -306,7 +306,11 @@ func (hw *htmlWriter) grid(n *nodes.GridNode) {
 	for _, r := range n.Rows {
 		hw.writeString("<tr>")
 		for _, c := range r {
-			hw.writeFmt(`<td colspan="%d" rowspan="%d">`, c.Colspan, c.Rowspan)
+			align := ""
+			if c.Align != "" && c.Align != "left" {
+				align = fmt.Sprintf(` align="%s"`, c.Align)
+			}
+			hw.writeFmt(`<td colspan="%d" rowspan="%d"%s>`, c.Colspan, c.Rowspan, align)
 			hw.write(c.Content.Nodes...)
 			hw.writeString("</td>")
 		}
