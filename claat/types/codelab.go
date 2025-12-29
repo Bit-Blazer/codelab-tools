@@ -36,6 +36,7 @@ type Meta struct {
 	Feedback   string            `json:"feedback,omitempty"` // Issues and bugs are sent here
 	GA         string            `json:"ga,omitempty"`       // Codelab-specific GA tracking ID
 	GA4        string            `json:"ga4,omitempty"`      // Codelab-specific GA4 tracking ID
+	HomeURL    string            `json:"home_url,omitempty"` // Optional home URL for back/done buttons
 	Extra      map[string]string `json:"extra,omitempty"`    // Extra metadata specified in pass_metadata
 
 	URL string `json:"url"` // Legacy ID; TODO: remove

@@ -57,6 +57,7 @@ const (
 	MetaTags                = "tags"
 	MetaSource              = "source"
 	MetaDuration            = "duration"
+	MetaHomeURL             = "home_url"
 )
 
 const (
@@ -437,6 +438,9 @@ func addMetadataToCodelab(m map[string]string, c *types.Codelab, opts parser.Opt
 		case MetaFeedbackLink:
 			// Directly assign the feedback link to the codelab field.
 			c.Feedback = v
+		case MetaHomeURL:
+			// Directly assign the home URL to the codelab field.
+			c.HomeURL = v
 		case MetaAnalyticsAccount:
 			// Directly assign the GA id to the codelab field.
 			c.GA = v

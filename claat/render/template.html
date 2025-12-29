@@ -59,6 +59,16 @@ the License.
   <script>
     hljs.highlightAll();
     hljs.addPlugin(new CopyButtonPlugin({ autohide: false}));
+    {{if .Meta.HomeURL}}
+    // Override home URL with metadata value
+    document.addEventListener('DOMContentLoaded', function() {
+      const homeUrl = "{{.Meta.HomeURL}}";
+      const arrowBack = document.getElementById('arrow-back');
+      const doneBtn = document.getElementById('done');
+      if (arrowBack) arrowBack.href = homeUrl;
+      if (doneBtn) doneBtn.href = homeUrl;
+    });
+    {{end}}
   </script>
 
 </body>
