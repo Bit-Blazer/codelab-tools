@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v6.1.0
+        with:
+          go-version: "1.25"
+
+      - name: Build releases
+        working-directory: claat
+        run: make release
+
+      - name: Upload artifacts
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: claat-binaries
+          path: |
+            claat/bin/claat-*
+            claat/bin/VERSION
+            claat/bin/sha1sum.txt
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            claat/bin/claat-*
+            claat/bin/VERSION
+            claat/bin/sha1sum.txt
