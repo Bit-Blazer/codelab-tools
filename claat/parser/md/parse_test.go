@@ -170,7 +170,6 @@ func TestParseMetadata(t *testing.T) {
 		Categories: []string{"not", "really"},
 		Tags:       []string{"kiosk", "web"},
 		Feedback:   "https://www.google.com",
-		GA:         "12345",
 		GA4:        "54321",
 		Extra:      map[string]string{},
 	}
@@ -181,7 +180,6 @@ authors: john smith
 summary: abcdefghij
 categories: not, really
 environments: kiosk, web
-analytics_account: 12345
 analytics_ga4_account: 54321
 feedback_link: https://www.google.com
 
@@ -205,7 +203,6 @@ func TestParseMetadataPassMetadata(t *testing.T) {
 		Categories: []string{"not", "really"},
 		Tags:       []string{"kiosk", "web"},
 		Feedback:   "https://www.google.com",
-		GA:         "12345",
 		GA4:        "54321",
 		Extra: map[string]string{
 			"extra_field_two": "bbbbb",

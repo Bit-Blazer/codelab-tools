@@ -52,7 +52,6 @@ const (
 	MetaEnvironments        = "environments"
 	MetaStatus              = "status"
 	MetaFeedbackLink        = "feedback_link"
-	MetaAnalyticsAccount    = "analytics_account"
 	MetaAnalyticsGa4Account = "analytics_ga4_account"
 	MetaTags                = "tags"
 	MetaSource              = "source"
@@ -441,11 +440,8 @@ func addMetadataToCodelab(m map[string]string, c *types.Codelab, opts parser.Opt
 		case MetaHomeURL:
 			// Directly assign the home URL to the codelab field.
 			c.HomeURL = v
-		case MetaAnalyticsAccount:
-			// Directly assign the GA id to the codelab field.
-			c.GA = v
 		case MetaAnalyticsGa4Account:
-			// Directly assign the GA id to the codelab field.
+			// Directly assign the GA4 id to the codelab field.
 			c.GA4 = v
 		case MetaTags:
 			// Standardize the tags and append to the codelab field.

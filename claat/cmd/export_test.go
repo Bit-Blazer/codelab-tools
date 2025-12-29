@@ -64,7 +64,7 @@ func TestExportCodelabMemory(t *testing.T) {
 				Expenv:   "web",
 				Output:   tmp,
 				Tmplout:  "html",
-				GlobalGA: "UA-99999999-99",
+				GlobalGA4: "G-XXXXXXXXXX",
 			}
 
 			// Given the same markdown input, ExportCodelabMemory should have the same output content as ExportCodelab

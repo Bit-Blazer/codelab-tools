@@ -11,7 +11,7 @@ type Context struct {
 	Env     string       `json:"environment"`       // Current export environment
 	Format  string       `json:"format"`            // Output format, e.g. "html"
 	Prefix  string       `json:"prefix,omitempty"`  // Assets URL prefix for HTML-based formats
-	MainGA  string       `json:"mainga,omitempty"`  // Global Google Analytics ID
+	MainGA4 string       `json:"mainga4,omitempty"`  // Global Google Analytics 4 ID
 	Updated *ContextTime `json:"updated,omitempty"` // Last update timestamp
 }
 

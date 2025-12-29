@@ -37,7 +37,6 @@ import (
 type Context struct {
 	Env       string
 	Prefix    string
-	GlobalGA  string
 	GlobalGA4 string
 	Format    string
 	Meta      *types.Meta
@@ -104,7 +103,6 @@ var funcMap = map[string]interface{}{
 		res += kvLine(mdParse.MetaCategories, strings.Join(meta.Categories, ","))
 		res += kvLine(mdParse.MetaTags, strings.Join(meta.Tags, ","))
 		res += kvLine(mdParse.MetaFeedbackLink, meta.Feedback)
-		res += kvLine(mdParse.MetaAnalyticsAccount, meta.GA)
 		res += kvLine(mdParse.MetaAnalyticsGa4Account, meta.GA4)
 		res += kvLine(mdParse.MetaSource, meta.Source)
 		res += kvLine(mdParse.MetaDuration, strconv.Itoa(meta.Duration))

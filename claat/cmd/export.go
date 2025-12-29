@@ -40,8 +40,8 @@ type CmdExportOptions struct {
 	Expenv string
 	// ExtraVars is extra template variables.
 	ExtraVars map[string]string
-	// GlobalGA is the global Google Analytics account to use.
-	GlobalGA string
+	// GlobalGA4 is the global Google Analytics 4 account to use.
+	GlobalGA4 string
 	// Output is the output directory, or "-" for stdout.
 	Output string
 	// PassMetadata are the extra metadata fields to pass along.
@@ -117,13 +117,13 @@ func ExportCodelab(src string, rt http.RoundTripper, opts CmdExportOptions) (*ty
 		dir = codelabDir(dir, meta)
 	}
 	// write codelab and its metadata to disk
-	return meta, writeCodelab(dir, clab.Codelab, opts.ExtraVars, &types.Context{
+	       return meta, writeCodelab(dir, clab.Codelab, opts.ExtraVars, &types.Context{
 		Env:     opts.Expenv,
 		Format:  opts.Tmplout,
 		Prefix:  opts.Prefix,
-		MainGA:  opts.GlobalGA,
+		MainGA4:  opts.GlobalGA4,
 		Updated: &lastmod,
-	})
+	       })
 }
 
 func ExportCodelabMemory(src io.ReadCloser, w io.Writer, opts CmdExportOptions) (*types.Meta, error) {
@@ -140,7 +140,7 @@ func ExportCodelabMemory(src io.ReadCloser, w io.Writer, opts CmdExportOptions) 
 		Env:     opts.Expenv,
 		Format:  opts.Tmplout,
 		Prefix:  opts.Prefix,
-		MainGA:  opts.GlobalGA,
+		MainGA4:  opts.GlobalGA4,
 		Updated: &lastmod,
 	}
 
@@ -155,16 +155,16 @@ func writeCodelabWriter(w io.Writer, clab *types.Codelab, extraVars map[string]s
 		StepNum int
 		Prev    bool
 		Next    bool
-	}{Context: render.Context{
+	       }{Context: render.Context{
 		Env:      ctx.Env,
 		Prefix:   ctx.Prefix,
 		Format:   ctx.Format,
-		GlobalGA: ctx.MainGA,
+		GlobalGA4: ctx.MainGA4,
 		Updated:  time.Time(*ctx.Updated).Format(time.RFC3339),
 		Meta:     &clab.Meta,
 		Steps:    clab.Steps,
 		Extra:    extraVars,
-	}}
+	       }}
 
 	if ctx.Format == "offline" {
 		return errors.New("exporting codelab offline is not supported for In-Memory Export")
@@ -202,7 +202,7 @@ func writeCodelab(dir string, clab *types.Codelab, extraVars map[string]string, 
 		Env:      ctx.Env,
 		Prefix:   ctx.Prefix,
 		Format:   ctx.Format,
-		GlobalGA: ctx.MainGA,
+		GlobalGA4: ctx.MainGA4,
 		Updated:  time.Time(*ctx.Updated).Format(time.RFC3339),
 		Meta:     &clab.Meta,
 		Steps:    clab.Steps,

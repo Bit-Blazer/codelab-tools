@@ -411,8 +411,8 @@ func metaTable(ds *docState) {
 			ds.clab.Status = &sv
 		case "feedback", "feedback_link":
 			ds.clab.Feedback = s
-		case "analytics", "analytics_account", "google_analytics":
-			ds.clab.GA = s
+		case "analytics", "analytics_ga4_account", "google_analytics":
+			ds.clab.GA4 = s
 		default:
 			// If not explicitly parsed, it might be a pass_metadata value.
 			if _, ok := ds.passMetadata[fieldName]; ok {

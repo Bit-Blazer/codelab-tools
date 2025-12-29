@@ -37,8 +37,8 @@ type CmdUpdateOptions struct {
 	AuthToken string
 	// ExtraVars is extra template variables.
 	ExtraVars map[string]string
-	// GlobalGA is the global Google Analytics account to use.
-	GlobalGA string
+	// GlobalGA4 is the global Google Analytics 4 account to use.
+	GlobalGA4 string
 	// PassMetadata are the extra metadata fields to pass along.
 	PassMetadata map[string]bool
 	// Prefix is a URL prefix to prepend when using HTML format.
@@ -98,13 +98,13 @@ func updateCodelab(dir string, opts CmdUpdateOptions) (*types.Meta, error) {
 	if err != nil {
 		return nil, err
 	}
-	// override allowed options from cli
-	if opts.Prefix != "" {
-		meta.Prefix = opts.Prefix
-	}
-	if opts.GlobalGA != "" {
-		meta.MainGA = opts.GlobalGA
-	}
+	       // override allowed options from cli
+	       if opts.Prefix != "" {
+		       meta.Prefix = opts.Prefix
+	       }
+	       if opts.GlobalGA4 != "" {
+		       meta.MainGA4 = opts.GlobalGA4
+	       }
 
 	// fetch and parse codelab source
 	f, err := fetch.NewFetcher(opts.AuthToken, opts.PassMetadata, nil)
