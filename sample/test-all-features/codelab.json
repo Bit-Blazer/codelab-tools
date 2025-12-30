@@ -1,0 +1,32 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga4": "G-XXXXXXXXXX",
+  "updated": "2025-12-31T00:49:28+05:30",
+  "id": "test-all-features",
+  "duration": 26,
+  "title": "Test All Features Codelab",
+  "authors": [
+    "Test Author",
+    "Another Author"
+  ],
+  "summary": "A comprehensive test codelab demonstrating all supported markdown features",
+  "source": "test-all-features.md",
+  "theme": "",
+  "status": "Published",
+  "categories": [
+    "testing",
+    "markdown",
+    "demo"
+  ],
+  "tags": [
+    "comprehensive",
+    "sample",
+    "test",
+    "web"
+  ],
+  "feedback_link": "https://github.com/example/feedback",
+  "ga4": "G-4LV2JBSBPM",
+  "home_url": "/sample-course/"
+}
