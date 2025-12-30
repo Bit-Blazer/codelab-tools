@@ -51,6 +51,22 @@ func NormalizedSplit(s string) []string {
 	return Unique(strs)
 }
 
+// SimpleSplit takes a string, splits it by comma, and trims spaces from each fragment.
+// Unlike NormalizedSplit, it preserves the original case and doesn't remove internal spaces.
+func SimpleSplit(s string) []string {
+	if s == "" {
+		return []string{}
+	}
+	parts := strings.Split(s, ",")
+	result := make([]string, 0, len(parts))
+	for _, part := range parts {
+		if trimmed := strings.TrimSpace(part); trimmed != "" {
+			result = append(result, trimmed)
+		}
+	}
+	return result
+}
+
 func stripSpaces(s string) string {
 	var b strings.Builder
 	b.Grow(len(s))

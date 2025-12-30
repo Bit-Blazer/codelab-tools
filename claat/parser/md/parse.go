@@ -415,8 +415,8 @@ func addMetadataToCodelab(m map[string]string, c *types.Codelab, opts parser.Opt
 	for k, v := range m {
 		switch strcase.SnakeCase(k) {
 		case MetaAuthors:
-			// Directly assign the summary to the codelab field.
-			c.Authors = v
+			// Split authors by comma and assign to codelab field.
+			c.Authors = util.SimpleSplit(v)
 		case MetaSummary:
 			// Directly assign the summary to the codelab field.
 			c.Summary = v
@@ -430,13 +430,11 @@ func addMetadataToCodelab(m map[string]string, c *types.Codelab, opts parser.Opt
 			// Standardize the tags and append to the codelab field.
 			c.Tags = append(c.Tags, util.NormalizedSplit(v)...)
 		case MetaStatus:
-			// Standardize the statuses and append to the codelab field.
-			statuses := util.NormalizedSplit(v)
-			statusesAsLegacy := types.LegacyStatus(statuses)
-			c.Status = &statusesAsLegacy
+			// Directly assign status string.
+			c.Status = v
 		case MetaFeedbackLink:
 			// Directly assign the feedback link to the codelab field.
-			c.Feedback = v
+			c.FeedbackLink = v
 		case MetaHomeURL:
 			// Directly assign the home URL to the codelab field.
 			c.HomeURL = v

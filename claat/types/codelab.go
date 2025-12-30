@@ -23,22 +23,20 @@ import (
 
 // Meta contains a single codelab metadata.
 type Meta struct {
-	ID         string            `json:"id"`                 // ID is also part of codelab URL
-	Duration   int               `json:"duration"`           // Codelab duration in minutes
-	Title      string            `json:"title"`              // Codelab title
-	Authors    string            `json:"authors,omitempty"`  // Arbitrary authorship text
-	Summary    string            `json:"summary"`            // Short summary
-	Source     string            `json:"source"`             // Codelab source doc
-	Theme      string            `json:"theme"`              // Usually first item of Categories
-	Status     *LegacyStatus     `json:"status"`             // Draft, Published, Hidden, etc.
-	Categories []string          `json:"category"`           // Categories from the meta table
-	Tags       []string          `json:"tags"`               // All environments supported by the codelab
-	Feedback   string            `json:"feedback,omitempty"` // Issues and bugs are sent here
-	GA4        string            `json:"ga4,omitempty"`      // Codelab-specific GA4 tracking ID
-	HomeURL    string            `json:"home_url,omitempty"` // Optional home URL for back/done buttons
-	Extra      map[string]string `json:"extra,omitempty"`    // Extra metadata specified in pass_metadata
-
-	URL string `json:"url"` // Legacy ID; TODO: remove
+	ID           string            `json:"id"`                      // ID is also part of codelab URL
+	Duration     int               `json:"duration"`                // Codelab duration in minutes
+	Title        string            `json:"title"`                   // Codelab title
+	Authors      []string          `json:"authors,omitempty"`       // List of authors
+	Summary      string            `json:"summary"`                 // Short summary
+	Source       string            `json:"source"`                  // Codelab source doc
+	Theme        string            `json:"theme"`                   // Usually first item of Categories
+	Status       string            `json:"status"`                  // Draft, Published, Hidden, etc.
+	Categories   []string          `json:"categories"`              // Categories from the meta table
+	Tags         []string          `json:"tags"`                    // All environments supported by the codelab
+	FeedbackLink string            `json:"feedback_link,omitempty"` // Issues and bugs are sent here
+	GA4          string            `json:"ga4,omitempty"`           // Codelab-specific GA4 tracking ID
+	HomeURL      string            `json:"home_url,omitempty"`      // Optional home URL for back/done buttons
+	Extra        map[string]string `json:"extra,omitempty"`         // Extra metadata specified in pass_metadata
 }
 
 // Codelab is a top-level structure containing metadata and codelab steps.

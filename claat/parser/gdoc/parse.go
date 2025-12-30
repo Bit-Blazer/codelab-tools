@@ -394,24 +394,24 @@ func metaTable(ds *docState) {
 		s := stringifyNode(tr.FirstChild.NextSibling, true, false)
 		fieldName := strcase.SnakeCase(stringifyNode(tr.FirstChild, true, false))
 		switch fieldName {
-		case "id", "url":
+		case "id":
 			ds.clab.ID = s
-		case "author", "authors":
-			ds.clab.Authors = s
+		case "authors":
+			ds.clab.Authors = util.SimpleSplit(s)
 		case "summary":
 			ds.clab.Summary = stringifyNode(tr.FirstChild.NextSibling, true, true)
-		case "category", "categories":
+		case "categories":
 			ds.clab.Categories = util.NormalizedSplit(s)
 			toLowerSlice(ds.clab.Categories)
-		case "environment", "environments", "tags":
+		case "environments", "tags":
 			ds.clab.Tags = util.NormalizedSplit(s)
-		case "status", "state":
-			v := util.NormalizedSplit(s)
-			sv := types.LegacyStatus(v)
-			ds.clab.Status = &sv
-		case "feedback", "feedback_link":
-			ds.clab.Feedback = s
-		case "analytics", "analytics_ga4_account", "google_analytics":
+		case "status":
+			ds.clab.Status = s
+		case "feedback_link":
+			ds.clab.FeedbackLink = s
+		case "home_url":
+			ds.clab.HomeURL = s
+		case "analytics_ga4_account":
 			ds.clab.GA4 = s
 		default:
 			// If not explicitly parsed, it might be a pass_metadata value.

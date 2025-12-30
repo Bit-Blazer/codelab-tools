@@ -4,7 +4,7 @@
 
 # {{.Meta.Title}}
 
-{{if .Meta.Feedback}}[Codelab Feedback]({{.Meta.Feedback}}){{end}}
+{{if .Meta.FeedbackLink}}[Codelab Feedback]({{.Meta.FeedbackLink}}){{end}}
 
 {{range .Steps}}{{if matchEnv .Tags $.Env}}
 ## {{.Title}}

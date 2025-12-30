@@ -41,7 +41,7 @@ the License.
                   id="{{.Meta.ID}}"
                   title="{{.Meta.Title}}"
                   environment="{{index .Env}}"
-                  feedback-link="{{.Meta.Feedback}}">
+                  feedback-link="{{.Meta.FeedbackLink}}">
     {{range $i, $e := .Steps}}{{if matchEnv .Tags $.Env}}
       <google-codelab-step label="{{.Title}}" duration="{{.Duration.Minutes}}">
         {{.Content | renderHTML $.Context}}

@@ -96,13 +96,11 @@ var funcMap = map[string]interface{}{
 		res := ""
 		res += kvLine(mdParse.MetaID, meta.ID)
 		res += kvLine(mdParse.MetaSummary, meta.Summary)
-		if meta.Status != nil {
-			res += kvLine(mdParse.MetaStatus, meta.Status.String())
-		}
-		res += kvLine(mdParse.MetaAuthors, meta.Authors)
+		res += kvLine(mdParse.MetaStatus, meta.Status)
+		res += kvLine(mdParse.MetaAuthors, strings.Join(meta.Authors, ","))
 		res += kvLine(mdParse.MetaCategories, strings.Join(meta.Categories, ","))
 		res += kvLine(mdParse.MetaTags, strings.Join(meta.Tags, ","))
-		res += kvLine(mdParse.MetaFeedbackLink, meta.Feedback)
+		res += kvLine(mdParse.MetaFeedbackLink, meta.FeedbackLink)
 		res += kvLine(mdParse.MetaAnalyticsGa4Account, meta.GA4)
 		res += kvLine(mdParse.MetaSource, meta.Source)
 		res += kvLine(mdParse.MetaDuration, strconv.Itoa(meta.Duration))
