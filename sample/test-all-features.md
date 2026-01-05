@@ -49,9 +49,7 @@ Surveys help gather feedback from users. They appear as multiple-choice question
   <input type="radio" value="Intermediate">
   <input type="radio" value="Advanced">
   <input type="radio" value="Expert">
-</form>
 
-<form>
   <name>What is your primary goal for this codelab?</name>
   <input type="radio" value="Learn a new skill">
   <input type="radio" value="Build a project">
