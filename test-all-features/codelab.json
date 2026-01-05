@@ -1,0 +1,32 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build",
+  "mainga4": "G-XXXXXXXXXX",
+  "updated": "2026-01-05T14:07:32Z",
+  "id": "test-all-features",
+  "duration": 28,
+  "title": "Test All Features Codelab",
+  "authors": [
+    "Test Author",
+    "Another Author"
+  ],
+  "summary": "A comprehensive test codelab demonstrating all supported markdown features",
+  "source": "codelabs/test-all-features.md",
+  "theme": "",
+  "status": "Published",
+  "categories": [
+    "testing",
+    "markdown",
+    "demo"
+  ],
+  "tags": [
+    "comprehensive",
+    "sample",
+    "test",
+    "web"
+  ],
+  "feedback_link": "https://github.com/example/feedback",
+  "ga4": "G-4LV2JBSBPM",
+  "home_url": "/codelab-tools/"
+}

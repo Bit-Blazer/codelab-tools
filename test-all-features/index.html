@@ -1,0 +1,392 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Test All Features Codelab</title>
+  <meta name="description" content="A comprehensive test codelab demonstrating all supported markdown features">
+  <meta name="keywords" content="tag_comprehensive,tag_sample,tag_test,tag_web,category_testing,category_markdown,category_demo">
+  <meta name="authors" content="Test Author, Another Author">
+  <meta name="duration" content="28">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/codelab-elements.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/monokai.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics ga4id="G-XXXXXXXXXX"></google-codelab-analytics>
+  <google-codelab codelab-ga4id="G-4LV2JBSBPM"
+                  id="test-all-features"
+                  title="Test All Features Codelab"
+                  environment="web"
+                  feedback-link="https://github.com/example/feedback">
+    
+      <google-codelab-step label="Overview" duration="2">
+        
+        <google-codelab-about 
+                      codelab-title="Test All Features Codelab"
+                      authors='Test Author, Another Author'
+                      last-updated="2026-01-05T14:07:32Z"
+                      duration="28">
+        </google-codelab-about>
+        
+        <p>This is a <strong>comprehensive test codelab</strong> that demonstrates <em>all supported markdown features</em>. It includes every type of element you can use in a codelab.</p>
+<h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
+<ul class="checklist">
+<li>How to use all markdown elements</li>
+<li>Different types of content blocks</li>
+<li>Special codelab syntax</li>
+</ul>
+<h2 is-upgraded>What you&#39;ll need</h2>
+<ul>
+<li>A text editor</li>
+<li>Basic markdown knowledge</li>
+<li><code>claat</code> tool installed</li>
+</ul>
+<aside class="special"><p>This is a positive infobox! Use it for tips and best practices.</p>
+</aside>
+<aside class="warning"><p>This is a negative/warning infobox! Use it for warnings and important notes.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Survey Example" duration="2">
+        
+        <p>Surveys help gather feedback from users. They appear as multiple-choice questions and results are sent to Google Analytics (if configured).</p>
+<google-codelab-survey survey-id="test-all-features-1">
+<h4>How would you rate your programming experience?</h4>
+<radio-group>
+<radio-button>Beginner</radio-button>
+<radio-button>Intermediate</radio-button>
+<radio-button>Advanced</radio-button>
+<radio-button>Expert</radio-button>
+</radio-group>
+<h4>What is your primary goal for this codelab?</h4>
+<radio-group>
+<radio-button>Learn a new skill</radio-button>
+<radio-button>Build a project</radio-button>
+<radio-button>Prepare for work/interview</radio-button>
+<radio-button>Just exploring</radio-button>
+</radio-group>
+</google-codelab-survey>
+<aside class="special"><p>Survey responses are stored locally and sent to Google Analytics as custom variables.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Text Formatting" duration="3">
+        
+        <p>This section demonstrates various text formatting options.</p>
+<h2 is-upgraded>Basic Formatting</h2>
+<p>Here&#39;s <strong>bold text</strong>, <em>italic text</em>, and <code>inline code</code>.</p>
+<p>You can also combine them: <strong><em>bold and italic</em></strong>, <strong><code>bold code</code></strong>, and <em><code>italic code</code></em>.</p>
+<h2 is-upgraded>Links</h2>
+<p>Here&#39;s a <a href="https://www.google.com" target="_blank">link to Google</a> and another <a href="https://github.com" target="_blank">link to GitHub</a>.</p>
+<h2 is-upgraded>Paragraphs</h2>
+<p>This is a paragraph with multiple sentences. It contains regular text that spans across lines. The renderer will handle line breaks appropriately.</p>
+<p>This is a second paragraph separated by a blank line.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Lists and Structure" duration="4">
+        
+        <h2 is-upgraded>Unordered Lists</h2>
+<ul>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item <ul>
+<li>Nested item 1</li>
+<li>Nested item 2</li>
+</ul>
+</li>
+<li>Fourth item</li>
+</ul>
+<h2 is-upgraded>Ordered Lists</h2>
+<ol type="1">
+<li>First step</li>
+<li>Second step</li>
+<li>Third step <ol type="1">
+<li>Sub-step A</li>
+<li>Sub-step B</li>
+</ol>
+</li>
+<li>Fourth step</li>
+</ol>
+<h2 is-upgraded>Mixed Lists</h2>
+<ol type="1">
+<li>Start with ordered</li>
+<li>Continue ordered <ul>
+<li>Nested unordered item</li>
+<li>Another nested item</li>
+</ul>
+</li>
+<li>Back to ordered</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Code Blocks" duration="5">
+        
+        <h2 is-upgraded>JavaScript</h2>
+<pre><code language="language-javascript" class="language-javascript">function greet(name) {
+  console.log(`Hello, ${name}!`);
+  return true;
+}
+
+// Call the function
+greet(&#34;World&#34;);
+</code></pre>
+<h2 is-upgraded>Python</h2>
+<pre><code language="language-python" class="language-python">def calculate_sum(numbers):
+    &#34;&#34;&#34;Calculate the sum of a list of numbers.&#34;&#34;&#34;
+    total = sum(numbers)
+    return total
+
+result = calculate_sum([1, 2, 3, 4, 5])
+print(f&#34;Sum: {result}&#34;)
+</code></pre>
+<h2 is-upgraded>HTML</h2>
+<pre><code language="language-html" class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Test Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;p&gt;This is a test.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 is-upgraded>CSS</h2>
+<pre><code language="language-css" class="language-css">.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+}
+</code></pre>
+<h2 is-upgraded>Bash/Shell</h2>
+<pre><code language="language-bash" class="language-bash">#!/bin/bash
+
+echo &#34;Starting deployment...&#34;
+npm install
+npm run build
+npm test
+
+if [ $? -eq 0 ]; then
+  echo &#34;Tests passed!&#34;
+else
+  echo &#34;Tests failed!&#34;
+  exit 1
+fi
+</code></pre>
+<h2 is-upgraded>Console (No Highlighting)</h2>
+<pre>$ npm install
+$ npm run build
+$ npm test
+
+&gt; test@1.0.0 test
+&gt; jest
+
+PASS  tests/example.test.js
+✓ should pass (2 ms)
+</pre>
+<h2 is-upgraded>JSON</h2>
+<pre><code language="language-json" class="language-json">{
+  &#34;name&#34;: &#34;test-project&#34;,
+  &#34;version&#34;: &#34;1.0.0&#34;,
+  &#34;dependencies&#34;: {
+    &#34;express&#34;: &#34;^4.18.0&#34;,
+    &#34;lodash&#34;: &#34;^4.17.21&#34;
+  }
+}
+</code></pre>
+<h2 is-upgraded>Go</h2>
+<pre><code language="language-go" class="language-go">package main
+
+import &#34;fmt&#34;
+
+func main() {
+    message := &#34;Hello, Go!&#34;
+    fmt.Println(message)
+
+    numbers := []int{1, 2, 3, 4, 5}
+    sum := 0
+    for _, num := range numbers {
+        sum += num
+    }
+    fmt.Printf(&#34;Sum: %d\n&#34;, sum)
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Info Boxes" duration="3">
+        
+        <h2 is-upgraded>Positive Info Boxes</h2>
+<aside class="special"><p>Use positive info boxes for helpful tips and best practices. They can contain <strong>formatted text</strong>, <em>italics</em>, and <code>inline code</code> too!</p>
+</aside>
+<aside class="special"><p> Same message using blockquote syntax.</p>
+</aside>
+<aside class="special"><p> Same message using HTML syntax. </p>
+</aside>
+<h2 is-upgraded>Negative Info Boxes</h2>
+<aside class="warning"><p>Warning! This is important information you shouldn&#39;t ignore.</p>
+</aside>
+<aside class="warning"><p> Same warning using blockquote syntax.</p>
+</aside>
+<aside class="warning"><p> Same warning using HTML syntax. </p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Tables" duration="4">
+        
+        <h2 is-upgraded>Simple Table</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Name</p>
+</td><td colspan="1" rowspan="1"><p>Age</p>
+</td><td colspan="1" rowspan="1"><p>City</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Alice</p>
+</td><td colspan="1" rowspan="1"><p>30</p>
+</td><td colspan="1" rowspan="1"><p>New York</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Bob</p>
+</td><td colspan="1" rowspan="1"><p>25</p>
+</td><td colspan="1" rowspan="1"><p>San Francisco</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Charlie</p>
+</td><td colspan="1" rowspan="1"><p>35</p>
+</td><td colspan="1" rowspan="1"><p>London</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Table with Alignment</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Left Aligned</p>
+</td><td colspan="1" rowspan="1" align="center"><p>Center Aligned</p>
+</td><td colspan="1" rowspan="1" align="right"><p>Right Aligned</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>Left</p>
+</td><td colspan="1" rowspan="1" align="center"><p>Center</p>
+</td><td colspan="1" rowspan="1" align="right"><p>Right</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>A</p>
+</td><td colspan="1" rowspan="1" align="center"><p>B</p>
+</td><td colspan="1" rowspan="1" align="right"><p>C</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>1</p>
+</td><td colspan="1" rowspan="1" align="center"><p>2</p>
+</td><td colspan="1" rowspan="1" align="right"><p>3</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Image</h2>
+<p class="image-container"><img alt="Sample Image" src="img/e2500cc24e07c73f.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Videos and Media" duration="2">
+        
+        <h2 is-upgraded>YouTube Video</h2>
+<p>Embed YouTube videos using the video tag with the video ID:</p>
+<iframe class="youtube-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 is-upgraded>Embedded Iframes</h2>
+<p>Embed interactive content from allowlisted domains (CodePen, Glitch, StackBlitz, etc.):</p>
+<iframe class="embedded-iframe" src="https://codepen.io/team/codepen/embed/preview/PNaGbb"></iframe>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Buttons and Downloads" duration="2">
+        
+        <h2 is-upgraded>Download Buttons</h2>
+<p><a href="https://example.com/sdk.zip" target="_blank"><button class="colored" raised><span class="material-icons">download</span>Download SDK</button></a></p>
+<p><a href="https://example.com/source.zip" target="_blank"><button class="colored" raised><span class="material-icons">download</span>Download Source Code</button></a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Congratulations" duration="1">
+        
+        <p>You&#39;ve successfully tested all codelab features!</p>
+<h2 class="checklist" is-upgraded>What we&#39;ve covered</h2>
+<ul class="checklist">
+<li>✅ Text formatting (bold, italic, code)</li>
+<li>✅ Lists (ordered, unordered, nested)</li>
+<li>✅ Code blocks with syntax highlighting</li>
+<li>✅ Info boxes (positive and negative)</li>
+<li>✅ Tables with alignment</li>
+<li>✅ Images</li>
+<li>✅ Download buttons</li>
+<li>✅ Advanced combinations</li>
+</ul>
+<h2 is-upgraded>Following links have special List Styling</h2>
+<h3 is-upgraded><a href="https://github.com/googlecodelabs/tools" target="_blank">github repo</a></h3>
+<h2 class="faq" is-upgraded>Frequently Asked Questions</h2>
+<ul class="faq">
+<li><a href="https://stackoverflow.com/questions/tagged/google-codelabs" target="_blank">Stack Overflow</a></li>
+<li><a href="https://cloud.google.com/support/docs/" target="_blank">Google Cloud Console Help</a></li>
+<li><a href="https://developer.android.com/support" target="_blank">Android Developers Help</a></li>
+<li><a href="https://support.google.com/webmasters/" target="_blank">Google webmaster Help</a></li>
+</ul>
+<h2 is-upgraded>Next steps</h2>
+<ul>
+<li>Create your own codelab</li>
+<li>Experiment with different elements</li>
+<li>Share your codelabs with others</li>
+</ul>
+<p><a href="https://github.com/googlecodelabs/tools" target="_blank"><button class="colored" raised>View Documentation</button></a><a href="https://github.com/googlecodelabs/tools/tree/master/claat" target="_blank"><button class="colored" raised>Create Your Own</button></a></p>
+<aside class="special"><p>Thanks for testing! If you found any issues, please report them.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/native-shim.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/codelab-elements.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin({ autohide: false}));
+    
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const homeUrl = "\/codelab-tools\/";
+      const arrowBack = document.getElementById('arrow-back');
+      const doneBtn = document.getElementById('done');
+      if (arrowBack) arrowBack.href = homeUrl;
+      if (doneBtn) doneBtn.href = homeUrl;
+    });
+    
+  </script>
+
+</body>
+</html>

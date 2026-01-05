@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build",
+  "mainga4": "G-XXXXXXXXXX",
+  "updated": "2026-01-05T14:07:32Z",
+  "id": "create-a-codelab",
+  "duration": 14,
+  "title": "CodeLab to Create a CodeLab",
+  "summary": "Create a CodeLab Using Markdown",
+  "source": "codelabs/create-a-codelab.md",
+  "theme": "",
+  "status": "Published",
+  "categories": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback_link": "https://github.com/Mrc0113/codelab-4-codelab",
+  "home_url": "/codelab-tools/"
+}

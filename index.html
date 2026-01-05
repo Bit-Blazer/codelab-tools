@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse and discover hands-on coding tutorials and codelabs">
+    <title>Codelabs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                        fill="currentColor" />
+                </svg>
+                <span class="logo-text">Codelabs</span>
+            </div>
+            <div class="search-box">
+                <span class="material-symbols-outlined search-icon">search</span>
+                <input type="text" id="search" placeholder="Search" autocomplete="off">
+                <span class="search-shortcut">/</span>
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="material-symbols-outlined">dark_mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="hero">
+            <div class="hero-title-wrapper">
+                <svg class="hero-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                        fill="currentColor" />
+                </svg>
+                <h1 class="hero-title">Codelabs</h1>
+            </div>
+            <p class="hero-description">
+                Google Developers Codelabs provide a guided, tutorial, hands-on coding experience. Most codelabs will
+                step you through the process of building a small application, or adding a new feature to an existing
+                application.
+            </p>
+            <a href="https://github.com/googlecodelabs/tools" class="hero-link" target="_blank">Codelab tools on
+                GitHub...</a>
+        </div>
+
+        <div class="content-wrapper">
+            <aside class="sidebar" id="sidebar">
+                <div class="sort-section">
+                    <h4>Sort By</h4>
+                    <select id="sort" class="filter-select">
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                        <option value="updated-desc">Recently Updated</option>
+                        <option value="updated-asc">Oldest First</option>
+                        <option value="duration-asc">Duration (Short)</option>
+                        <option value="duration-desc">Duration (Long)</option>
+                    </select>
+                </div>
+                <div class="sidebar-header">
+                    <h3>Filters</h3>
+                    <button class="sidebar-close" id="sidebar-close">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="active-filters" id="active-filters"></div>
+
+                <div class="filter-group">
+                    <div class="filter-group-header">
+                        <h4>Categories</h4>
+                        <button class="filter-clear" data-group="categories">Clear</button>
+                    </div>
+                    <div class="filter-checkboxes" id="category-checkboxes"></div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group-header">
+                        <h4>Tags</h4>
+                        <button class="filter-clear" data-group="tags">Clear</button>
+                    </div>
+                    <div class="filter-checkboxes" id="tag-checkboxes"></div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group-header">
+                        <h4>Authors</h4>
+                        <button class="filter-clear" data-group="authors">Clear</button>
+                    </div>
+                    <div class="filter-checkboxes" id="author-checkboxes"></div>
+                </div>
+
+                <div class="sidebar-footer">
+                    <span class="results-count" id="results-count">Loading...</span>
+                    <button class="button-secondary" id="reset-filters">Reset All</button>
+                </div>
+            </aside>
+
+            <div class="main-panel">
+                <button class="filter-toggle" id="filter-toggle">
+                    <span class="material-symbols-outlined">tune</span>
+                    Filters
+                </button>
+
+                <div class="codelabs-grid" id="codelabs-container">
+                    <!-- Codelabs will be inserted here by JavaScript -->
+                </div>
+
+                <div class="no-results" id="no-results" style="display: none;">
+                    <p>No codelabs found matching your criteria.</p>
+                    <p class="no-results-hint">Try adjusting your filters or search terms.</p>
+                </div>
+
+                <div class="pagination" id="pagination" style="display: none;">
+                    <button class="pagination-btn" id="prev-page" disabled>
+                        <span class="material-symbols-outlined">chevron_left</span>
+                        Previous
+                    </button>
+                    <div class="pagination-pages" id="pagination-pages"></div>
+                    <button class="pagination-btn" id="next-page">
+                        Next
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                        fill="currentColor" />
+                </svg>
+                <span>Codelabs</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/googlecodelabs/tools" target="_blank">About</a>
+                <a href="https://github.com/googlecodelabs/tools" target="_blank">Help</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
