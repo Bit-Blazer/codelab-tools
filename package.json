@@ -8,7 +8,7 @@
     "build": "node_modules/.bin/bazel build npm_dist && unzip -o bazel-bin/npm_dist.zip -d codelab-elements/build",
     "test": "node_modules/.bin/bazel test --test_output=all codelab-elements/demo:hello_test",
     "pub": "npm run clean && npm run build && cd bazel-genfiles && unzip npm_dist.zip -d npm_dist && npm publish npm_dist",
-    "demo": "cd claat && go build -o bin/claat.exe && cd ..\\sample && ..\\claat\\bin\\claat.exe export test-all-features.md && ..\\claat\\bin\\claat.exe serve"
+    "demo": "cd claat && go build -o bin/claat.exe && cd ..\\sample && ..\\claat\\bin\\claat.exe export -prefix ../../codelab-elements/build test-all-features.md"
   },
   "author": "Google",
   "repository": {

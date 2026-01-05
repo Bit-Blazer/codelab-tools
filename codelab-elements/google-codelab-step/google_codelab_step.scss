@@ -194,11 +194,11 @@ google-codelab-step .instructions strong {
   font-weight: 600;
 }
 
-google-codelab-step .instructions :link paper-button {
+google-codelab-step .instructions :link button {
   text-decoration: none !important;
 }
 
-google-codelab-step .instructions paper-button {
+google-codelab-step .instructions button {
   display: inline-block;
   border-radius: 4px;
   color: #FFFFFF;
@@ -213,27 +213,27 @@ google-codelab-step .instructions paper-button {
   text-transform: none;
 }
 
-google-codelab-step .instructions paper-button a {
+google-codelab-step .instructions button a {
   text-decoration: none;
   color: inherit !important;
 }
 
-google-codelab-step a paper-button {
+google-codelab-step a button {
   /* The text-decoration styling doesn't apply to inline blocks.
-     We use this trick to remove underline when paper-button
+     We use this trick to remove underline when button
      is wrapped in the anchor element. */
   display: inline-block;
 }
 
-google-codelab-step .instructions paper-button.colored {
+google-codelab-step .instructions button.colored {
   background-color: $google-material-green-600;
 }
 
-google-codelab-step .instructions paper-button.red {
+google-codelab-step .instructions button.red {
   background-color: #D93025;
 }
 
-google-codelab-step .instructions iron-icon {
+google-codelab-step .instructions span.material-icons {
   vertical-align: sub;
   margin-right: 7px;
   margin-left: 3px;
@@ -242,7 +242,7 @@ google-codelab-step .instructions iron-icon {
   position: relative;
 }
 
-iron-icon {
+span.material-icons {
   font: normal normal normal 24px/1 "Material Icons";
   -webkit-font-feature-settings: "liga";
   font-feature-settings: "liga";
@@ -252,10 +252,6 @@ iron-icon {
   text-transform: none;
   word-wrap: normal;
   font-size: inherit;
-}
-
-iron-icon[icon=file-download]::after {
-  content: "cloud_download";
 }
 
 google-codelab-step .instructions img {

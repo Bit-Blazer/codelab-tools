@@ -612,53 +612,53 @@ func TestButton(t *testing.T) {
 		{
 			name:   "Empty",
 			inNode: nodes.NewButtonNode(false, false, false),
-			out:    `<paper-button></paper-button>`,
+			out:    `<button></button>`,
 		},
 		{
 			name:   "NoProperties",
 			inNode: nodes.NewButtonNode(false, false, false, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button>foobar</paper-button>`,
+			out:    `<button>foobar</button>`,
 		},
 		{
 			name:   "Raise",
 			inNode: nodes.NewButtonNode(true, false, false, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button raised>foobar</paper-button>`,
+			out:    `<button raised>foobar</button>`,
 		},
 		{
 			name:   "Color",
 			inNode: nodes.NewButtonNode(false, true, false, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button class="colored">foobar</paper-button>`,
+			out:    `<button class="colored">foobar</button>`,
 		},
 		{
 			name:   "Download",
 			inNode: nodes.NewButtonNode(false, false, true, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button><iron-icon icon="file-download"></iron-icon>foobar</paper-button>`,
+			out:    `<button><span class="material-icons">download</span>foobar</button>`,
 		},
 		{
 			name:   "RaiseColor",
 			inNode: nodes.NewButtonNode(true, true, false, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button class="colored" raised>foobar</paper-button>`,
+			out:    `<button class="colored" raised>foobar</button>`,
 		},
 		{
 			name:   "ColorDownload",
 			inNode: nodes.NewButtonNode(false, true, true, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button class="colored"><iron-icon icon="file-download"></iron-icon>foobar</paper-button>`,
+			out:    `<button class="colored"><span class="material-icons">download</span>foobar</button>`,
 		},
 		{
 			name:   "RaiseDownload",
 			inNode: nodes.NewButtonNode(true, false, true, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button raised><iron-icon icon="file-download"></iron-icon>foobar</paper-button>`,
+			out:    `<button raised><span class="material-icons">download</span>foobar</button>`,
 		},
 		{
 			name:   "RaiseColorDownload",
 			inNode: nodes.NewButtonNode(true, true, true, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foobar"})),
-			out:    `<paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>foobar</paper-button>`,
+			out:    `<button class="colored" raised><span class="material-icons">download</span>foobar</button>`,
 		},
 		{
 			name:   "MultipleContent",
 			inNode: nodes.NewButtonNode(false, false, false, nodes.NewHeaderNode(2, nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "foo"})), nodes.NewTextNode(nodes.NewTextNodeOptions{Value: "bar"})),
-			out: `<paper-button><h2 is-upgraded>foo</h2>
-bar</paper-button>`,
+			out: `<button><h2 is-upgraded>foo</h2>
+bar</button>`,
 		},
 	}
 	for _, tc := range tests {

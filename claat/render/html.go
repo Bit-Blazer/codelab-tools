@@ -205,7 +205,7 @@ func (hw *htmlWriter) url(n *nodes.URLNode) {
 }
 
 func (hw *htmlWriter) button(n *nodes.ButtonNode) {
-	hw.writeString("<paper-button")
+	hw.writeString("<button")
 	if n.Color {
 		hw.writeString(` class="colored"`)
 	}
@@ -214,10 +214,10 @@ func (hw *htmlWriter) button(n *nodes.ButtonNode) {
 	}
 	hw.writeString(">")
 	if n.Download {
-		hw.writeString(`<iron-icon class="material-icons">file_download</iron-icon>`)
+		hw.writeString(`<span class="material-icons">download</span>`)
 	}
 	hw.write(n.Content.Nodes...)
-	hw.writeString("</paper-button>")
+	hw.writeString("</button>")
 }
 
 func (hw *htmlWriter) code(n *nodes.CodeNode) {

@@ -89,12 +89,12 @@ the License.
       <google-codelab-step label="Getting set up" duration="10">
         <h2><strong>Download the Code</strong></h2>
 <p>Click the following link to download all the code for this codelab:</p>
-<p><a href="https://github.com/googlecodelabs/your-first-pwapp/archive/master.zip" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download source code</paper-button></a></p>
+<p><a href="https://github.com/googlecodelabs/your-first-pwapp/archive/master.zip" target="_blank"><button class="colored" raised><span class="material-icons">download</span>Download source code</button></a></p>
 <p>Unpack the downloaded zip file. This will unpack a root folder (<code>your-first-pwapp-master</code>), which contains one folder for each step of this codelab, along with all of the resources you will need.</p>
 <p>The <code>step-NN</code> folders contain the desired end state of each step of this codelab. They are there for reference. We&#39;ll be doing all our coding work in a directory called <code>work</code>.</p>
 <h2><strong>Install and verify web server</strong></h2>
 <p>While you&#39;re free to use your own web server, this codelab is designed to work well with the Chrome Web Server. If you don&#39;t have that app installed yet, you can install it from the Chrome Web Store.</p>
-<p><a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en" target="_blank"><paper-button class="colored" raised>Install Web Server for Chrome</paper-button></a></p>
+<p><a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb?hl=en" target="_blank"><button class="colored" raised>Install Web Server for Chrome</button></a></p>
 <p>After installing the Web Server for Chrome app, click on the Apps shortcut on the bookmarks bar: </p>
 <p><img alt="Screen Shot 2016-04-11 at 4.01.20 PM.png" style="max-width: 124.00px" src="img/9efdf0d1258b78e4.png"></p>
 <aside class="special"><p>More help: <a href="https://support.google.com/chrome_webstore/answer/3060053" target="_blank">Add and open Chrome apps</a></p>
@@ -222,7 +222,7 @@ the License.
 <pre>// app.updateForecastCard(initialWeatherForecast);</pre>
 <p>Reload your app. The result should be a nicely formatted (though fake, as you can tell by the date) forecast card with the spinner disabled, like this:</p>
 <p><img style="max-width: 243.85px" src="img/166c3b4982e4a0ad.png"></p>
-<p><a href="https://weather-pwa-sample.firebaseapp.com/step-04/" target="_blank"><paper-button class="colored" raised>TRY IT</paper-button></a></p>
+<p><a href="https://weather-pwa-sample.firebaseapp.com/step-04/" target="_blank"><button class="colored" raised>TRY IT</button></a></p>
 <p>Once you&#39;ve tried it and verified it works as expected, you can remove the call to  <code>app.updateForecastCard</code> with the fake data again. We only needed it to ensure that everything worked as expected.</p>
 
 
@@ -303,7 +303,7 @@ the License.
 <li>Add a new city (by clicking the + icon on the upper right) and verify that two cards are shown.</li>
 <li>Refresh the browser and verify that the app loads both forecasts and shows the latest information.</li>
 </ul>
-<p><a href="https://weather-pwa-sample.firebaseapp.com/step-05/" target="_blank"><paper-button class="colored" raised>TRY IT</paper-button></a></p>
+<p><a href="https://weather-pwa-sample.firebaseapp.com/step-05/" target="_blank"><button class="colored" raised>TRY IT</button></a></p>
 
 
       </google-codelab-step>
@@ -435,7 +435,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 <p>Check out the <code>else</code> clause in <code>app.getForecast()</code> to understand why the app is able to load the fake data.</p>
 <p>The next step is to modify the app and service worker logic to be able to cache weather data, and return the most recent data from the cache when the app is offline.</p>
 <p><strong>Tip:</strong> To start fresh and clear all saved data (<code>localStorage</code>, <code>indexedDB</code> data, cached files) and remove any service workers, use the Clear storage pane in the Application tab.</p>
-<p><a href="https://weather-pwa-sample.firebaseapp.com/step-06/" target="_blank"><paper-button class="colored" raised>TRY IT</paper-button></a></p>
+<p><a href="https://weather-pwa-sample.firebaseapp.com/step-06/" target="_blank"><button class="colored" raised>TRY IT</button></a></p>
 <h2><strong>Beware of the edge cases</strong></h2>
 <p>As previously mentioned, this code <strong>must not be used in production</strong> because of the many unhandled edge cases.</p>
 <h3><strong>Cache depends on updating the cache key for every change</strong></h3>
@@ -565,7 +565,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 <p>The app should be completely offline-functional now. Save a couple of cities and press the refresh button on the app to get fresh weather data, and then go offline and reload the page. </p>
 <p>Then go to the <strong>Cache Storage</strong> pane on the <strong>Application</strong> panel of DevTools. Expand the section and you should see the name of your app shell and data cache listed on the left-hand side. Opening the data cache should should the data stored for each city.</p>
 <p><img style="max-width: 624.00px" src="img/cf095c2153306fa7.png"></p>
-<p><a href="https://weather-pwa-sample.firebaseapp.com/step-07/" target="_blank"><paper-button class="colored" raised>TRY IT</paper-button></a></p>
+<p><a href="https://weather-pwa-sample.firebaseapp.com/step-07/" target="_blank"><button class="colored" raised>TRY IT</button></a></p>
 
 
       </google-codelab-step>
@@ -656,7 +656,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 <p>You will see service worker errors in the console when testing this way because the service worker is not being served over HTTPS.</p>
 <p>Using Chrome from an Android device, try adding the app to the homescreen and verifying that the launch screen appears properly and the right icons are used.</p>
 <p>On Safari and Internet Explorer, you can also manually add the app to your homescreen.</p>
-<p><a href="https://weather-pwa-sample.firebaseapp.com/step-08/" target="_blank"><paper-button class="colored" raised>TRY IT</paper-button></a></p>
+<p><a href="https://weather-pwa-sample.firebaseapp.com/step-08/" target="_blank"><button class="colored" raised>TRY IT</button></a></p>
 
 
       </google-codelab-step>
@@ -688,7 +688,7 @@ self.addEventListener(&#39;install&#39;, function(e) {
 <ul>
 <li>Try adding the app to your home screen then disconnect the network and verify the app works offline as expected.</li>
 </ul>
-<p><a href="https://weather-pwa-sample.firebaseapp.com/final/" target="_blank"><paper-button class="colored" raised>TRY IT</paper-button></a></p>
+<p><a href="https://weather-pwa-sample.firebaseapp.com/final/" target="_blank"><button class="colored" raised>TRY IT</button></a></p>
 
 
       </google-codelab-step>
