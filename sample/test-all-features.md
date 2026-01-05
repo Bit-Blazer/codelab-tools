@@ -37,6 +37,31 @@ Positive
 Negative
 : This is a negative/warning infobox! Use it for warnings and important notes.
 
+## Survey Example
+
+Duration: 2:00
+
+Surveys help gather feedback from users. They appear as multiple-choice questions and results are sent to Google Analytics (if configured).
+
+<form>
+  <name>How would you rate your programming experience?</name>
+  <input type="radio" value="Beginner">
+  <input type="radio" value="Intermediate">
+  <input type="radio" value="Advanced">
+  <input type="radio" value="Expert">
+</form>
+
+<form>
+  <name>What is your primary goal for this codelab?</name>
+  <input type="radio" value="Learn a new skill">
+  <input type="radio" value="Build a project">
+  <input type="radio" value="Prepare for work/interview">
+  <input type="radio" value="Just exploring">
+</form>
+
+Positive
+: Survey responses are stored locally and sent to Google Analytics as custom variables.
+
 ## Text Formatting
 
 Duration: 3:00

@@ -1,11 +1,11 @@
 {
   "environment": "web",
   "format": "html",
-  "prefix": "https://storage.googleapis.com",
+  "prefix": "https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build",
   "mainga4": "G-XXXXXXXXXX",
-  "updated": "2025-12-31T00:49:28+05:30",
+  "updated": "2026-01-05T12:31:33+05:30",
   "id": "test-all-features",
-  "duration": 26,
+  "duration": 28,
   "title": "Test All Features Codelab",
   "authors": [
     "Test Author",

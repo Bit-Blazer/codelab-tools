@@ -21,6 +21,10 @@ the License.
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
   <title>{{.Meta.Title}}</title>
+  {{if .Meta.Summary}}<meta name="description" content="{{.Meta.Summary}}">{{end}}
+  {{if or .Meta.Tags .Meta.Categories}}<meta name="keywords" content="{{range $index, $tag := .Meta.Tags}}{{if $index}},{{end}}tag_{{$tag}}{{end}}{{range $index, $cat := .Meta.Categories}},category_{{$cat}}{{end}}">{{end}}
+  {{if .Meta.Authors}}<meta name="authors" content="{{join .Meta.Authors ", "}}">{{end}}
+  <meta name="duration" content="{{.Meta.Duration}}">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="{{.Prefix}}/codelab-elements.min.css">
@@ -44,6 +48,14 @@ the License.
                   feedback-link="{{.Meta.FeedbackLink}}">
     {{range $i, $e := .Steps}}{{if matchEnv .Tags $.Env}}
       <google-codelab-step label="{{.Title}}" duration="{{.Duration.Minutes}}">
+        {{if eq $i 0}}
+        <google-codelab-about 
+                      codelab-title="{{$.Meta.Title}}"
+                      {{if $.Meta.Authors}}authors='{{join $.Meta.Authors ", "}}'{{end}}
+                      {{if $.Updated}}last-updated="{{$.Updated}}"{{end}}
+                      duration="{{$.Meta.Duration}}">
+        </google-codelab-about>
+        {{end}}
         {{.Content | renderHTML $.Context}}
       </google-codelab-step>
     {{end}}{{end}}

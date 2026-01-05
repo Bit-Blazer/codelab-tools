@@ -291,6 +291,52 @@ Embed interactive content from allowlisted domains using image syntax with the U
 
 ---
 
+## Surveys
+
+Surveys allow you to collect user feedback through multiple-choice questions. Responses are stored locally in the browser and sent to Google Analytics (if configured) as custom variables.
+
+### Survey Syntax
+
+Use HTML `<form>` elements with these components:
+
+- `<name>` element - The question text (acts as a label)
+- `<input type="radio" value="...">` elements - The answer options
+
+### Example
+
+```markdown
+<form>
+  <name>What is your experience level with Python?</name>
+  <input type="radio" value="Beginner">
+  <input type="radio" value="Intermediate">
+  <input type="radio" value="Advanced">
+  <input type="radio" value="Expert">
+</form>
+```
+
+### Multiple Surveys
+
+You can include multiple survey questions in a codelab by using multiple `<form>` elements:
+
+```markdown
+<form>
+  <name>What is your primary goal?</name>
+  <input type="radio" value="Learn a new skill">
+  <input type="radio" value="Build a project">
+  <input type="radio" value="Certification preparation">
+</form>
+
+<form>
+  <name>Which IDE do you prefer?</name>
+  <input type="radio" value="VS Code">
+  <input type="radio" value="PyCharm">
+  <input type="radio" value="Sublime Text">
+  <input type="radio" value="Other">
+</form>
+```
+
+---
+
 ## Example Codelab
 
 ````markdown

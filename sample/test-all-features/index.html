@@ -7,9 +7,13 @@
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
   <title>Test All Features Codelab</title>
+  <meta name="description" content="A comprehensive test codelab demonstrating all supported markdown features">
+  <meta name="keywords" content="tag_comprehensive,tag_sample,tag_test,tag_web,category_testing,category_markdown,category_demo">
+  <meta name="authors" content="Test Author, Another Author">
+  <meta name="duration" content="28">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/codelab-elements.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/monokai.min.css">
   <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css">
   <style>
@@ -30,6 +34,14 @@
                   feedback-link="https://github.com/example/feedback">
     
       <google-codelab-step label="Overview" duration="2">
+        
+        <google-codelab-about 
+                      codelab-title="Test All Features Codelab"
+                      authors='Test Author, Another Author'
+                      last-updated="2026-01-05T12:31:33&#43;05:30"
+                      duration="28">
+        </google-codelab-about>
+        
         <p>This is a <strong>comprehensive test codelab</strong> that demonstrates <em>all supported markdown features</em>. It includes every type of element you can use in a codelab.</p>
 <h2 class="checklist" is-upgraded>What you&#39;ll learn</h2>
 <ul class="checklist">
@@ -51,7 +63,35 @@
 
       </google-codelab-step>
     
+      <google-codelab-step label="Survey Example" duration="2">
+        
+        <p>Surveys help gather feedback from users. They appear as multiple-choice questions and results are sent to Google Analytics (if configured).</p>
+<google-codelab-survey survey-id="test-all-features-1">
+<h4>How would you rate your programming experience?</h4>
+<paper-radio-group>
+<paper-radio-button>Beginner</paper-radio-button>
+<paper-radio-button>Intermediate</paper-radio-button>
+<paper-radio-button>Advanced</paper-radio-button>
+<paper-radio-button>Expert</paper-radio-button>
+</paper-radio-group>
+</google-codelab-survey>
+<google-codelab-survey survey-id="test-all-features-2">
+<h4>What is your primary goal for this codelab?</h4>
+<paper-radio-group>
+<paper-radio-button>Learn a new skill</paper-radio-button>
+<paper-radio-button>Build a project</paper-radio-button>
+<paper-radio-button>Prepare for work/interview</paper-radio-button>
+<paper-radio-button>Just exploring</paper-radio-button>
+</paper-radio-group>
+</google-codelab-survey>
+<aside class="special"><p>Survey responses are stored locally and sent to Google Analytics as custom variables.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Text Formatting" duration="3">
+        
         <p>This section demonstrates various text formatting options.</p>
 <h2 is-upgraded>Basic Formatting</h2>
 <p>Here&#39;s <strong>bold text</strong>, <em>italic text</em>, and <code>inline code</code>.</p>
@@ -66,6 +106,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Lists and Structure" duration="4">
+        
         <h2 is-upgraded>Unordered Lists</h2>
 <ul>
 <li>First item</li>
@@ -103,6 +144,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="Code Blocks" duration="5">
+        
         <h2 is-upgraded>JavaScript</h2>
 <pre><code language="language-javascript" class="language-javascript">function greet(name) {
   console.log(`Hello, ${name}!`);
@@ -205,6 +247,7 @@ func main() {
       </google-codelab-step>
     
       <google-codelab-step label="Info Boxes" duration="3">
+        
         <h2 is-upgraded>Positive Info Boxes</h2>
 <aside class="special"><p>Use positive info boxes for helpful tips and best practices. They can contain <strong>formatted text</strong>, <em>italics</em>, and <code>inline code</code> too!</p>
 </aside>
@@ -224,6 +267,7 @@ func main() {
       </google-codelab-step>
     
       <google-codelab-step label="Tables" duration="4">
+        
         <h2 is-upgraded>Simple Table</h2>
 <table>
 <tr><td colspan="1" rowspan="1"><p>Name</p>
@@ -269,6 +313,7 @@ func main() {
       </google-codelab-step>
     
       <google-codelab-step label="Videos and Media" duration="2">
+        
         <h2 is-upgraded>YouTube Video</h2>
 <p>Embed YouTube videos using the video tag with the video ID:</p>
 <iframe class="youtube-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -280,6 +325,7 @@ func main() {
       </google-codelab-step>
     
       <google-codelab-step label="Buttons and Downloads" duration="2">
+        
         <h2 is-upgraded>Download Buttons</h2>
 <p><a href="https://example.com/sdk.zip" target="_blank"><paper-button class="colored" raised><iron-icon class="material-icons">file_download</iron-icon>Download SDK</paper-button></a></p>
 <p><a href="https://example.com/source.zip" target="_blank"><paper-button class="colored" raised><iron-icon class="material-icons">file_download</iron-icon>Download Source Code</paper-button></a></p>
@@ -288,6 +334,7 @@ func main() {
       </google-codelab-step>
     
       <google-codelab-step label="Congratulations" duration="1">
+        
         <p>You&#39;ve successfully tested all codelab features!</p>
 <h2 class="checklist" is-upgraded>What we&#39;ve covered</h2>
 <ul class="checklist">
@@ -324,10 +371,8 @@ func main() {
     
   </google-codelab>
 
-  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
-  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
-  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
-  <script src="//support.google.com/inapp/api.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/native-shim.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/codelab-elements.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
   <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
   <script>

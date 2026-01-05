@@ -80,6 +80,7 @@ var funcMap = map[string]interface{}{
 	"renderLite": Lite,
 	"renderHTML": HTML,
 	"renderMD":   MD,
+	"join":       strings.Join,
 	"durationStr": func(d time.Duration) string {
 		m := d / time.Minute
 		return fmt.Sprintf("%02d:00", m)
