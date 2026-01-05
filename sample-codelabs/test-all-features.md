@@ -6,7 +6,7 @@ environments: Web
 status: Published
 tags: sample, comprehensive, test
 feedback link: https://github.com/example/feedback
-home url: /sample-course/
+home url: /codelab-tools/
 source: test-source-doc
 duration: 30
 analytics ga4 account: G-4LV2JBSBPM
