@@ -4,6 +4,17 @@
  */
 
 /**
+ * Helper: Show alert dialog
+ */
+function showAlert(message) {
+  DocumentApp.getUi().alert(
+    "Codelab Format Tools",
+    message,
+    DocumentApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
  * Helper: Get insertion index for cursor position
  * @returns {number|null} - Returns insertion index or null if no cursor
  */
@@ -46,11 +57,6 @@ function insertDuration() {
   // Insert duration paragraph with default 5:00
   const metaPara = body.insertParagraph(insertIndex + 1, "Duration: 5:00");
   metaPara.editAsText().setForegroundColor(DURATION_COLOR);
-  metaPara.editAsText().setBold(false);
-  metaPara.editAsText().setItalic(false);
-
-  // Insert blank normal paragraph after so format doesn't continue
-  body.insertParagraph(insertIndex + 2, "");
 
   return "Duration added - Edit the time (format: MM:SS)";
 }
@@ -150,7 +156,8 @@ function createSurveyBlock() {
     const cell = table.getRow(0).getCell(0);
 
     // Add H4 question
-    const question = cell.appendParagraph("Your survey question?");
+    const question = cell.getChild(0).asParagraph();
+    question.setText("Your survey question?");
     question.setHeading(DocumentApp.ParagraphHeading.HEADING4);
 
     // Add bullet list
@@ -176,10 +183,18 @@ function applyInlineCode() {
 
   const elements = selection.getRangeElements();
   for (let i = 0; i < elements.length; i++) {
-    const element = elements[i].getElement();
+    const rangeElement = elements[i];
+    const element = rangeElement.getElement();
+
     if (element.getType() === DocumentApp.ElementType.TEXT) {
       const text = element.asText();
-      text.setFontFamily(FONT_CODE);
+
+      // Apply formatting only to selected range
+      if (rangeElement.isPartial()) {
+        text.setFontFamily(rangeElement.getStartOffset(), rangeElement.getEndOffsetInclusive(), FONT_CODE);
+      } else {
+        text.setFontFamily(FONT_CODE);
+      }
     }
   }
   return "Inline code applied - Courier New font";
@@ -286,7 +301,7 @@ function insertMetadataTable() {
     ["Status", "Draft"],
     ["Feedback Link", "https://github.com/yourrepo/issues"],
     ["Home URL", "https://yoursite.com"],
-    ["Analytics GA4 Account", ""],
+    ["Analytics GA4 Account", "GA-XXXXXXX"],
   ];
 
   metadata.forEach(([key, value]) => {
@@ -404,16 +419,4 @@ function insertFAQSection() {
 
   return "FAQ section added with sample links - Edit URLs";
 }
-
-/**
- * Helper: Show alert dialog
- */
-function showAlert(message) {
-  DocumentApp.getUi().alert(
-    "Codelab Format Tools",
-    message,
-    DocumentApp.getUi().ButtonSet.OK
-  );
-}
-
 

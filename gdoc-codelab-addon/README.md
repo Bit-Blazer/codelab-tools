@@ -56,7 +56,7 @@ _Coming soon - add-on pending review_
 
 [clasp](https://github.com/google/clasp) allows you to develop locally with VS Code and push to Google Apps Script.
 
-#### First-time setup:
+#### First-time setup
 
 1. **Install clasp globally**
 
@@ -95,12 +95,13 @@ _Coming soon - add-on pending review_
    ```
 
 6. **Open in Apps Script editor** (optional)
+
    ```bash
    npm run open
    # or: clasp open
    ```
 
-#### Development workflow:
+#### Development workflow
 
 - **Edit files** in VS Code
 - **Push changes**: `npm run push`
@@ -259,6 +260,7 @@ After formatting your document:
 1. **Validate** using the add-on
 2. **Publish** your Google Doc (make it viewable by anyone)
 3. **Export** using claat:
+
    ```bash
    claat export <google-doc-url>
    ```
