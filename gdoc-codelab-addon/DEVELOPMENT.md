@@ -63,6 +63,7 @@ Only these files are pushed (see `.claspignore`):
 - `appsscript.json` - Manifest
 
 These are ignored:
+
 - `README.md`, `QUICKSTART.md`
 - `package.json`, `node_modules/`
 - Git files

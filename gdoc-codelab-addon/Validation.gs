@@ -106,13 +106,13 @@ function validateSteps() {
 
                 if (nextText.includes('Duration:')) {
                     const textObj = nextPara.editAsText();
-                    if (textObj.getForegroundColor(0) === META_COLOR) {
+                    if (textObj.getForegroundColor(0) === DURATION_COLOR) {
                         hasDuration = true;
                     } else {
                         issues.push({
                             type: 'Error',
                             severity: 'medium',
-                            message: `Step "${text}" has Duration text but wrong color. Should be ${META_COLOR}`
+                            message: `Step "${text}" has Duration text but wrong color. Should be ${DURATION_COLOR}`
                         });
                     }
                 }
@@ -297,7 +297,7 @@ function checkCommonMistakes() {
             const startOffset = searchElement.getStartOffset();
             const color = text.getForegroundColor(startOffset);
 
-            if (!color || color.toLowerCase() !== META_COLOR.toLowerCase()) {
+            if (!color || color.toLowerCase() !== DURATION_COLOR.toLowerCase()) {
                 issues.push({
                     type: 'Warning',
                     severity: 'medium',
@@ -320,7 +320,7 @@ function checkCommonMistakes() {
             const startOffset = envElement.getStartOffset();
             const color = text.getForegroundColor(startOffset);
 
-            if (!color || color.toLowerCase() !== META_COLOR.toLowerCase()) {
+            if (!color || color.toLowerCase() !== DURATION_COLOR.toLowerCase()) {
                 issues.push({
                     type: 'Warning',
                     severity: 'medium',
@@ -363,7 +363,7 @@ function autoFixIssues() {
                 const lineEnd = fullText.indexOf('\n', startOffset);
                 const endOffset = lineEnd > -1 ? lineEnd : fullText.length - 1;
 
-                paraText.setForegroundColor(startOffset, endOffset, META_COLOR);
+                paraText.setForegroundColor(startOffset, endOffset, DURATION_COLOR);
                 fixCount++;
             }
         }
@@ -388,18 +388,12 @@ function autoFixIssues() {
                 const lineEnd = fullText.indexOf('\n', startOffset);
                 const endOffset = lineEnd > -1 ? lineEnd : fullText.length - 1;
 
-                paraText.setForegroundColor(startOffset, endOffset, META_COLOR);
+                paraText.setForegroundColor(startOffset, endOffset, DURATION_COLOR);
                 fixCount++;
             }
         }
 
         element = body.findText('Environment:', element);
-    }
-
-    if (fixCount > 0) {
-        showToast('Auto-fix complete', `Fixed ${fixCount} issue(s)`);
-    } else {
-        showToast('No issues to fix', 'Document looks good!');
     }
 
     return fixCount;

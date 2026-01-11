@@ -2,6 +2,8 @@
 
 A powerful Google Docs add-on that makes authoring codelabs effortless. Apply proper formatting with one click, validate your document, and ensure perfect compatibility with the [claat](https://github.com/Bit-Blazer/codelab-tools/tree/main/claat) parser.
 
+[![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
+
 ![Add-on Screenshot](https://via.placeholder.com/600x400?text=Sidebar+Preview)
 
 ## 🎯 Features
@@ -288,7 +290,7 @@ gdoc-codelab-addon/
 Colors are extracted from `claat/parser/gdoc/css.go`:
 
 ```javascript
-const META_COLOR = "#b7b7b7";
+const DURATION_COLOR = "#b7b7b7";
 const BUTTON_COLOR = "#6aa84f";
 const INFOBOX_POSITIVE = "#d9ead3";
 const INFOBOX_NEGATIVE = "#fce5cd";

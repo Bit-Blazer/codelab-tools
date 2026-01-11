@@ -13,22 +13,6 @@ function onOpen(e) {
         .createAddonMenu()
         .addItem('Open Format Tools', 'showSidebar')
         .addSeparator()
-        .addSubMenu(
-            DocumentApp.getUi().createMenu('Quick Actions')
-                .addItem('Insert Step (H1)', 'insertStepHeading')
-                .addItem('Insert Section (H2)', 'insertSectionH2')
-                .addItem('Insert Subsection (H3)', 'insertSectionH3')
-                .addSeparator()
-                .addItem('Positive Infobox', 'createPositiveInfobox')
-                .addItem('Negative Infobox', 'createNegativeInfobox')
-                .addItem('Code Block', 'createCodeBlock')
-                .addItem('Console Block', 'createConsoleBlock')
-                .addSeparator()
-                .addItem('Inline Code', 'applyInlineCode')
-                .addItem('Download Button', 'createDownloadButton')
-        )
-        .addSeparator()
-        .addItem('Insert Metadata Table', 'insertMetadataTable')
         .addItem('Validate Format', 'validateDocument')
         .addItem('Show Format Guide', 'showFormatGuide')
         .addToUi();
@@ -46,8 +30,7 @@ function onInstall(e) {
  */
 function showSidebar() {
     const html = HtmlService.createHtmlOutputFromFile('Sidebar')
-        .setTitle('Codelab Format Tools')
-        .setWidth(320);
+        .setTitle('Codelab Format Tools');
 
     DocumentApp.getUi().showSidebar(html);
 }
@@ -96,7 +79,7 @@ function getDocumentContext() {
                     context.currentFormat.type = 'inline-code';
                 } else if (bgColor === BUTTON_COLOR) {
                     context.currentFormat.type = 'button';
-                } else if (fgColor === META_COLOR) {
+                } else if (fgColor === DURATION_COLOR) {
                     context.currentFormat.type = 'meta';
                 }
             } else if (element.getType() === DocumentApp.ElementType.TABLE_CELL) {

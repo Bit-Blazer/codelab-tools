@@ -14,7 +14,7 @@ function isMetaAnnotation(element) {
     const text = element.asText();
     const color = text.getForegroundColor(0);
 
-    return color && color.toLowerCase() === META_COLOR.toLowerCase();
+    return color && color.toLowerCase() === DURATION_COLOR.toLowerCase();
 }
 
 /**
