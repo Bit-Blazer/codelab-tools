@@ -4,7 +4,7 @@ A powerful Google Docs add-on that makes authoring codelabs effortless. Apply pr
 
 [![clasp](https://img.shields.io/badge/built%20with-clasp-4285f4.svg)](https://github.com/google/clasp)
 
-![Add-on Screenshot](https://via.placeholder.com/600x400?text=Sidebar+Preview)
+<img width="375" height="1107" alt="Sidebar" src="https://github.com/user-attachments/assets/e70b72d8-259e-4fec-bc18-65ba96a89727" />
 
 ## 🎯 Features
 
@@ -323,24 +323,6 @@ const SURVEY_COLOR = "#cfe2f3";
 - Check that all colors are exact
 - Validate before exporting
 
-## 📝 Format Guide Reference
-
-For complete formatting rules, see:
-
-- [OLD_GDOC_FORMAT_GUIDE.md](../OLD_GDOC_FORMAT_GUIDE.md)
-- [claat documentation](https://github.com/googlecodelabs/tools/tree/main/claat)
-
-## 🤝 Contributing
-
-Contributions welcome! This add-on is part of the [claat-tools](https://github.com/Bit-Blazer/codelab-tools) fork.
-
-### How to Contribute
-
-1. Fork the repository
-2. Make changes to the Apps Script files
-3. Test thoroughly in Google Docs
-4. Submit a pull request
-
 ## 📄 License
 
 Apache 2.0 - Same as the parent claat-tools project
@@ -350,12 +332,6 @@ Apache 2.0 - Same as the parent claat-tools project
 - Built for [claat-tools](https://github.com/Bit-Blazer/codelab-tools)
 - Original claat by [Google Codelabs](https://github.com/googlecodelabs/tools)
 - UX design inspired by modern Google Workspace add-ons
-
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/Bit-Blazer/codelab-tools/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Bit-Blazer/codelab-tools/discussions)
-- **Community**: [codelab-authors Google Group](https://groups.google.com/g/codelab-authors)
 
 ---
 
