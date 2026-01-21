@@ -864,6 +864,11 @@ func image(ds *docState) nodes.Node {
 		return nil
 	}
 
+	// Decode percent-encoded filenames (e.g. img/codelab%20example.png)
+	if decoded, err := url.PathUnescape(s); err == nil {
+		s = decoded
+	}
+
 	n := nodes.NewImageNode(nodes.NewImageNodeOptions{Src: s})
 
 	if alt != "" {
