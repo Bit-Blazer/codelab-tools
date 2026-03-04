@@ -1,11 +1,13 @@
 ---
 id: regex-complete-crash-course
 summary: A comprehensive 20-minute crash course covering all essential regex concepts
-authors: Your Name
+authors: Kamil Hassan
 categories: regex, programming, tutorial
 environments: Web
 status: Published
 duration: 22
+home url: /codelab-tools/
+feedback link: https://github.com/Bit-Blazer/regex-codelab/issues/new
 ---
 
 # Regular Expressions: Complete Crash Course
