@@ -27,8 +27,9 @@ This directory contains the client-side JavaScript and CSS for rendering codelab
 - **`google-codelab-about`** - About section displaying metadata
 
   - Shows codelab title
-  - Lists authors
+  - Lists authors with clickable profile links (when URLs provided)
   - Displays last updated date
+  - Supports "Name(URL)" format for author links
 
 - **`google-codelab-survey`** - Interactive survey/quiz element
 

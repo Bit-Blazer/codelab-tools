@@ -134,7 +134,46 @@ class CodelabAbout extends HTMLElement {
       codelabTitle: this.codelabTitle_.split(':').join(':||').split('||'),
     });
 
+    // Parse and render clickable author links
+    if (this.authors_) {
+      const authorsDiv = this.querySelector('.authors');
+      if (authorsDiv) {
+        const parsedAuthors = CodelabAbout.parseAuthorsToHtml_(this.authors_);
+        const textNode = authorsDiv.querySelector('.author-text');
+        if (textNode) {
+          textNode.innerHTML = parsedAuthors;
+        }
+      }
+    }
+
     this.hasSetup_ = true;
+  }
+
+  /**
+   * @private
+   * @param {string} authorsString
+   * @return {string}
+   */
+  static parseAuthorsToHtml_(authorsString) {
+    if (!authorsString) {
+      return '';
+    }
+    
+    // Split by comma to handle multiple authors
+    const authors = authorsString.split(',').map(author => author.trim());
+    
+    // Parse each author for "Name(URL)" format
+    const parsed = authors.map(author => {
+      const match = author.match(/^(.+?)\((.+?)\)$/);
+      if (match) {
+        const name = match[1].trim();
+        const url = match[2].trim();
+        return `<a href="${url}" target="_blank" rel="noopener">${name}</a>`;
+      }
+      return author;
+    });
+    
+    return parsed.join(', ');
   }
 }
 

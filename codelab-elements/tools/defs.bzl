@@ -53,7 +53,7 @@ def closure_js_binary(**kwargs):
       **kwargs: Additional arguments, passed to _closure_js_binary_alias.
     """
     kwargs.setdefault("compilation_level", "ADVANCED")
-    kwargs.setdefault("dependency_mode", "STRICT")
+    kwargs.setdefault("dependency_mode", "PRUNE")
     kwargs.setdefault("language", "ECMASCRIPT5_STRICT")
     kwargs.setdefault("defs", [
         "--assume_function_wrapper",

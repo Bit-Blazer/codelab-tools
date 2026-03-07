@@ -1,7 +1,7 @@
 ---
 id: regex-complete-crash-course
 summary: A comprehensive 20-minute crash course covering all essential regex concepts
-authors: Kamil Hassan
+authors: Kamil Hassan(https://github.com/Bit-Blazer)
 categories: regex, programming, tutorial
 environments: Web
 status: Published

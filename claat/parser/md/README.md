@@ -15,7 +15,7 @@ A minimal codelab requires:
 
 ```markdown
 ---
-authors: Your Name
+authors: Your Name(https://yoursite.com/)
 summary: Brief description of what users will learn
 id: unique-codelab-id
 categories: topic1, topic2
@@ -60,7 +60,7 @@ id: unique-codelab-identifier
 | ----------------------- | -------------------------------------- | -------------------------------------------- |
 | `id`                    | Unique identifier (lowercase, hyphens) | `my-first-codelab`                           |
 | `summary`               | Short description (1-2 sentences)      | `Learn how to build a web app`               |
-| `authors`               | Author name(s)                         | `John Doe`                                   |
+| `authors`               | Author name(s), optionally with links  | `John Doe(https://johndoe.com/)`             |
 | `categories`            | Comma-separated topics                 | `web, javascript, tutorial`                  |
 | `environments`          | Where codelab appears (adds to tags)   | `Web`, `Kiosk`                               |
 | `status`                | Publication status                     | `Draft`, `Published`, `Deprecated`, `Hidden` |
@@ -336,7 +336,7 @@ Use HTML `<form>` elements with these components:
 
 ````markdown
 ---
-authors: Jane Developer
+authors: Jane Developer(https://jane.com/)
 summary: Learn the basics of creating interactive codelabs
 id: getting-started-with-codelabs
 categories: tutorial,markdown
