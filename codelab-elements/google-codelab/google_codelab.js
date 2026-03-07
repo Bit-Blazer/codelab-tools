@@ -56,6 +56,9 @@ const CODELAB_ID_ATTR = 'codelab-id';
 const FEEDBACK_LINK_ATTR = 'feedback-link';
 
 /** @const {string} */
+const HOME_URL_ATTR = 'home-url';
+
+/** @const {string} */
 const SELECTED_ATTR = 'selected';
 
 /** @const {string} */
@@ -233,7 +236,7 @@ class Codelab extends HTMLElement {
   static get observedAttributes() {
     return [
       TITLE_ATTR, CODELAB_TITLE_ATTR, ENVIRONMENT_ATTR, CATEGORY_ATTR,
-      FEEDBACK_LINK_ATTR, SELECTED_ATTR, LAST_UPDATED_ATTR, NO_TOOLBAR_ATTR,
+      FEEDBACK_LINK_ATTR, HOME_URL_ATTR, SELECTED_ATTR, LAST_UPDATED_ATTR, NO_TOOLBAR_ATTR,
       NO_ARROWS_ATTR, ANALYTICS_READY_ATTR
     ];
   }
@@ -756,6 +759,13 @@ class Codelab extends HTMLElement {
    * @return {string}
    */
   getHomeUrl_() {
+    // Check if home-url attribute is set (from metadata)
+    const homeUrlAttr = this.getAttribute(HOME_URL_ATTR);
+    if (homeUrlAttr) {
+      return homeUrlAttr;
+    }
+
+    // Fall back to URL parameter-based logic
     const url = new URL(document.location.href);
     let index = url.searchParams.get('index');
     if (!index) {

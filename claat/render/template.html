@@ -45,7 +45,8 @@ the License.
                   id="{{.Meta.ID}}"
                   title="{{.Meta.Title}}"
                   environment="{{index .Env}}"
-                  feedback-link="{{.Meta.FeedbackLink}}">
+                  feedback-link="{{.Meta.FeedbackLink}}"
+                  {{if .Meta.HomeURL}}home-url="{{.Meta.HomeURL}}"{{end}}>
     {{range $i, $e := .Steps}}{{if matchEnv .Tags $.Env}}
       <google-codelab-step label="{{.Title}}" duration="{{.Duration.Minutes}}">
         {{if eq $i 0}}
@@ -68,16 +69,6 @@ the License.
   <script>
     hljs.highlightAll();
     hljs.addPlugin(new CopyButtonPlugin({ autohide: false}));
-    {{if .Meta.HomeURL}}
-    // Override home URL with metadata value
-    document.addEventListener('DOMContentLoaded', function() {
-      const homeUrl = "{{.Meta.HomeURL}}";
-      const arrowBack = document.getElementById('arrow-back');
-      const doneBtn = document.getElementById('done');
-      if (arrowBack) arrowBack.href = homeUrl;
-      if (doneBtn) doneBtn.href = homeUrl;
-    });
-    {{end}}
   </script>
 
 </body>
