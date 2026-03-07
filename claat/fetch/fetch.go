@@ -201,6 +201,9 @@ func (f *Fetcher) SlurpCodelab(src string, output string) (*codelab, error) {
 		}
 	}
 
+	// Set the source field to track where this codelab came from
+	clab.Meta.Source = src
+
 	v := &codelab{
 		Codelab: clab,
 		Typ:     res.typ,

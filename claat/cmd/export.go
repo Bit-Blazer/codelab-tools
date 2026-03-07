@@ -109,7 +109,6 @@ func ExportCodelab(src string, rt http.RoundTripper, opts CmdExportOptions) (*ty
 
 	// codelab export context
 	lastmod := types.ContextTime(clab.Mod)
-	clab.Meta.Source = src
 	meta := &clab.Meta
 
 	dir := opts.Output // output dir or stdout
