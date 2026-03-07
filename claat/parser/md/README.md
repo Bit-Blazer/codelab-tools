@@ -289,7 +289,21 @@ Embed interactive content from allowlisted domains using image syntax with the U
 ![https://codepen.io/example](https://codepen.io/example "Title")
 ```
 
-**Allowlisted domains:** codepen.io, dartpad.dev, glitch.com, github.com, observablehq.com, repl.it, stackblitz.com, vimeo.com, and more (see [iframe.go](claat\nodes\iframe.go#L5) for full list). Only HTTPS URLs are allowed.
+**Allowlisted domains:** codepen.io, dartpad.dev, glitch.com, github.com, observablehq.com, repl.it, stackblitz.com, vimeo.com, and more (see [iframe.go](..\..\nodes\iframe.go#L11) for full list). Only HTTPS URLs are allowed.
+
+**Adding custom domains:**
+
+To allow additional iframe domains, create an `iframe-allowlist.json` file in the same directory as your `claat.exe` executable:
+
+```json
+{
+  "allowlist": [
+    "example.com",
+    "mysite.dev",
+    "custom-domain.io"
+  ]
+}
+```
 
 ---
 

@@ -1,8 +1,13 @@
 package nodes
 
-// iframe allowlist - set of domains allow to embed iframes in a codelab.
-// TODO make this configurable somehow
-var IframeAllowlist = []string{
+import (
+	"encoding/json"
+	"log"
+	"os"
+	"path/filepath"
+)
+
+var defaultIframeAllowlist = []string{
 	"carto.com",
 	"codepen.io",
 	"dartlang.org",
@@ -19,7 +24,41 @@ var IframeAllowlist = []string{
 	"web.dev",
 }
 
-// NewIframeNode creates a new embedded iframe.
+// IframeAllowlist contains domains allowed to embed as iframes.
+// Loaded from iframe-allowlist.json (if exists) + defaults.
+var IframeAllowlist []string
+
+func init() {
+	IframeAllowlist = loadIframeAllowlist()
+}
+
+func loadIframeAllowlist() []string {
+	allowlist := make([]string, len(defaultIframeAllowlist))
+	copy(allowlist, defaultIframeAllowlist)
+	
+	exe, err := os.Executable()
+	if err != nil {
+		return allowlist
+	}
+	
+	configPath := filepath.Join(filepath.Dir(exe), "iframe-allowlist.json")
+	data, err := os.ReadFile(configPath)
+	if err != nil {
+		return allowlist
+	}
+	
+	var config struct {
+		Allowlist []string `json:"allowlist"`
+	}
+	if err := json.Unmarshal(data, &config); err == nil && len(config.Allowlist) > 0 {
+		allowlist = append(allowlist, config.Allowlist...)
+		log.Printf("Loaded iframe allowlist from: %s (+%d custom domains, %d total)", 
+			configPath, len(config.Allowlist), len(allowlist))
+	}
+	
+	return allowlist
+}
+
 func NewIframeNode(url string) *IframeNode {
 	return &IframeNode{
 		node: node{typ: NodeIframe},
