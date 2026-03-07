@@ -362,6 +362,26 @@ func parseNode(ds *docState) (nodes.Node, bool) {
 	if ds.cur.Type == html.TextNode && ds.cur.Data == "\n" {
 		return nil, true
 	}
+	
+	// Handle paragraph elements specially to keep all inline content together
+	// This prevents goldmark-generated inline formatting from being split into multiple <p> tags
+	if ds.cur.DataAtom == atom.P {
+		ds.push(nil)
+		children := parseSubtree(ds)
+		children = parser.CompactNodes(children)
+		ds.pop()
+		
+		if len(children) == 0 {
+			return nil, true
+		}
+		
+		// Wrap all paragraph content in a single ListNode with Block=true
+		// This keeps inline formatted content together on one line
+		ln := nodes.NewListNode(children...)
+		ln.MutateBlock(true)
+		return ln, true
+	}
+	
 	switch {
 	case isMeta(ds.cur):
 		metaStep(ds)
