@@ -109,6 +109,20 @@ google-codelab #codelab-nav-buttons #menu {
   align-items: center;
 }
 
+google-codelab #codelab-title .theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  color: #3C4043;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
 google-codelab #controls {
   position: absolute;
   bottom: 32px;
@@ -210,3 +224,62 @@ google-codelab .metadata a:focus {
 
 @import "drawer";
 @import "steps";
+
+// Dark Mode Support
+[data-theme="dark"] {
+  google-codelab #main {
+    background: #1E1E1E;
+  }
+
+  google-codelab #codelab-title {
+    background: #2D2D2D;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .5),
+      0px 2px 6px 2px rgba(0, 0, 0, .3);
+    color: #E8EAED;
+  }
+
+  google-codelab #codelab-title h1 a {
+    color: #E8EAED;
+  }
+
+  google-codelab #codelab-title h1 a:focus,
+  google-codelab #codelab-title h1 a:hover {
+    color: #FFFFFF;
+  }
+
+  google-codelab #codelab-nav-buttons #arrow-back,
+  google-codelab #codelab-nav-buttons #menu {
+    color: #E8EAED;
+  }
+
+  google-codelab #codelab-title .theme-toggle {
+    color: #E8EAED;
+  }
+
+  google-codelab #previous-step,
+  google-codelab #next-step,
+  google-codelab #done {
+    background: #3C4043;
+    color: #8AB4F8;
+  }
+
+  google-codelab #next-step {
+    color: #fff;
+    background: #1A73E8;
+  }
+
+  google-codelab #done {
+    background: #1E8E3E;
+    color: #fff;
+  }
+
+  google-codelab .metadata {
+    background: #1E1E1E;
+    color: #9AA0A6;
+  }
+
+  google-codelab .metadata a:hover,
+  google-codelab .metadata a:focus {
+    color: #E8EAED;
+  }
+}

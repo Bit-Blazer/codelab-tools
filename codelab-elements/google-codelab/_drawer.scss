@@ -204,3 +204,40 @@ google-codelab #drawer ol {
     margin-right: 9px;
   }
 }
+
+// Dark Mode Support
+[data-theme="dark"] {
+  google-codelab #drawer {
+    background: #2D2D2D;
+  }
+
+  google-codelab #drawer ol li a {
+    color: #9AA0A6;
+    border: 1px #5F6368 solid;
+    background: #3C4043;
+  }
+
+  google-codelab #drawer ol li a:active,
+  google-codelab #drawer ol li a:focus {
+    background: #5F6368;
+    border-color: #5F6368 !important;
+  }
+
+  google-codelab #drawer ol li[selected] a,
+  google-codelab #drawer ol li a:focus {
+    color: #E8EAED;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.5), 0 2px 6px 2px rgba(0,0,0,.3);
+  }
+
+  google-codelab #drawer ol li[selected] a {
+    border-color: #3C4043;
+  }
+
+  google-codelab #drawer ol li[completed] a {
+    color: #E8EAED;
+  }
+
+  google-codelab #drawer ol li[completed] .step:before {
+    background-color: #1A73E8;
+  }
+}

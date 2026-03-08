@@ -103,6 +103,9 @@ const DRAWER_OPEN_ATTR = 'drawer--open';
 /** @const {string} */
 const ANALYTICS_READY_ATTR = 'anayltics-ready';
 
+/** @const {string} */
+const THEME_STORAGE_KEY = 'codelab-theme';
+
 /**
  * The general codelab action event fired for trackable interactions.
  */
@@ -209,6 +212,7 @@ class Codelab extends HTMLElement {
    */
   connectedCallback() {
     this.init_();
+    this.setupTheme_();
     this.setupDom();
     this.addEvents();
     this.saveStep();
@@ -291,6 +295,47 @@ class Codelab extends HTMLElement {
    */
   get eventHandler() {
     return this.eventHandler_;
+  }
+
+  /**
+   * @private
+   */
+  setupTheme_() {
+    try {
+      const savedTheme = this.storage_.get(THEME_STORAGE_KEY) || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } catch (e) {
+      // If storage fails, default to light theme
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+
+  /**
+   * @private
+   */
+  toggleTheme_() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+
+    try {
+      this.storage_.set(THEME_STORAGE_KEY, newTheme);
+    } catch (e) {
+      // Ignore storage errors
+    }
+
+    this.updateThemeIcon_();
+  }
+
+  /**
+   * @private
+   */
+  updateThemeIcon_() {
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    const themeIcon = this.querySelector('.theme-toggle-icon');
+    if (themeIcon) {
+      themeIcon.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
+    }
   }
 
   /**
@@ -407,6 +452,16 @@ class Codelab extends HTMLElement {
                 this.removeAttribute(DRAWER_OPEN_ATTR);
               }
             });
+      }
+
+      // Theme toggle button
+      const themeToggle = this.titleContainer_.querySelector('#theme-toggle');
+      if (themeToggle) {
+        this.eventHandler_.listen(themeToggle, events.EventType.CLICK, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.toggleTheme_();
+        });
       }
     }
 
@@ -837,6 +892,7 @@ class Codelab extends HTMLElement {
     this.configureAnalytics_();
     this.showSelectedStep_();
     this.updateTitle_();
+    this.updateThemeIcon_();
     this.toggleArrows_();
     this.toggleToolbar_();
   }

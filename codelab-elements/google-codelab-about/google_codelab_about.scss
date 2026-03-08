@@ -60,3 +60,29 @@ google-codelab-about  .about-card .material-icons {
   top: 6px;
   position: relative;
 }
+
+// Dark Mode Support
+[data-theme="dark"] {
+  google-codelab-about .codelab-title {
+    color: #E8EAED;
+  }
+
+  google-codelab-about .about-card {
+    border: 1px #5F6368 solid;
+    background: #2D2D2D;
+    color: #BDC1C6;
+  }
+
+  google-codelab-about .about-card h2 {
+    color: #E8EAED;
+  }
+
+  google-codelab-about .about-card a {
+    color: #8AB4F8;
+  }
+
+  google-codelab-about .about-card a:hover,
+  google-codelab-about .about-card a:focus {
+    color: #AECBFA;
+  }
+}

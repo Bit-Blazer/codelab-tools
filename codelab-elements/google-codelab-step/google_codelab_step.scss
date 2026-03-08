@@ -357,3 +357,86 @@ google-codelab-step .embedded-iframe {
   max-width: 100%;
   max-height: 51vw;
 }
+
+// Dark Mode Support
+[data-theme="dark"] {
+  google-codelab-step h2.step-title {
+    color: #E8EAED;
+  }
+
+  google-codelab-step .step-title a {
+    color: #E8EAED;
+  }
+
+  google-codelab-step .step-title a:focus,
+  google-codelab-step .step-title a:hover {
+    color: #FFFFFF;
+  }
+
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions {
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5), 0px 2px 6px 2px rgba(0, 0, 0, 0.3);
+    background: #2D2D2D;
+    color: #BDC1C6;
+  }
+
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions :not(.step-title) > a,
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions :not(.step-title) > a:visited {
+    color: #8AB4F8;
+  }
+
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions h2,
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions h3,
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions h4 {
+    color: #E8EAED;
+  }
+
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.note,
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.notice {
+    border-color: #EA8600;
+    background: #3E2905;
+    color: #FDD663;
+  }
+
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.tip,
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.special {
+    border-color: #137333;
+    background: #0D3818;
+    color: #81C995;
+  }
+
+  google-codelab:not([theme="minimal"]) google-codelab-step .instructions aside.warning {
+    border-color: #EA8600;
+    background: #3E2905;
+    color: #FDD663;
+  }
+
+  google-codelab-step .instructions aside.callout {
+    background-color: #1E3A5F;
+    border-left: 3px solid #8AB4F8;
+    color: #BDC1C6;
+  }
+
+  google-codelab-step aside.callout b {
+    color: #8AB4F8;
+  }
+
+  google-codelab-step .instructions h2 code {
+    background: #3C4043;
+    color: #8AB4F8;
+  }
+
+  google-codelab-step .instructions td {
+    border-bottom: 1px solid #5F6368;
+    color: #BDC1C6;
+  }
+
+  google-codelab:not([theme="minimal"]) .instructions h3.faq {
+    border-bottom: 1px solid #5F6368;
+    color: #E8EAED;
+  }
+
+  google-codelab-step .instructions h3 > a[href*="github"],
+  google-codelab-step .instructions h3 > a[href*="github"]:visited {
+    color: #E8EAED;
+  }
+}
