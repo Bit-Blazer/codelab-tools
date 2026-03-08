@@ -42,12 +42,15 @@ var (
 	// Flags.
 	addr         = flag.String("addr", "localhost:9090", "hostname and port to bind web server to")
 	authToken    = flag.String("auth", "", "OAuth2 Bearer token; alternative credentials override.")
+	catalogTitle = flag.String("title", "Codelabs", "catalog title")
+	catalogDesc  = flag.String("description", "", "catalog description")
 	expenv       = flag.String("e", "web", "codelab environment")
 	extra        = flag.String("extra", "", "Additional arguments to pass to format templates. JSON object of string,string key values.")
 	globalGA4    = flag.String("ga4", "G-XXXXXXXXXX", "global Google Analytics 4 account")
 	output       = flag.String("o", ".", "output directory or '-' for stdout")
 	passMetadata = flag.String("pass_metadata", "", "Metadata fields to pass through to the output. Comma-delimited list of field names.")
 	prefix       = flag.String("prefix", "https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build", "URL prefix for html format")
+	serve        = flag.Bool("serve", false, "serve catalog after generation")
 	tmplout      = flag.String("f", "html", "output format")
 )
 
@@ -88,6 +91,15 @@ func main() {
 		})
 	case "serve":
 		exitCode = cmd.CmdServe(*addr)
+	case "catalog":
+		exitCode = cmd.CmdCatalog(cmd.CmdCatalogOptions{
+			Output:      *output,
+			Title:       *catalogTitle,
+			Description: *catalogDesc,
+			Prefix:      *prefix,
+			Serve:       *serve,
+			Addr:        *addr,
+		})
 	case "update":
 		exitCode = cmd.CmdUpdate(cmd.CmdUpdateOptions{
 			AuthToken:    *authToken,
