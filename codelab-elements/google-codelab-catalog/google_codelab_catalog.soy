@@ -1,0 +1,295 @@
+{namespace googlecodelabs.CodelabCatalog.Templates}
+
+/**
+ * Main catalog structure
+ */
+{template .catalog}
+  {@param title: string}
+  {@param description: string}
+  {@param themeIcon: string}
+  {@param? searchPlaceholder: string}
+
+  <div class="catalog-container">
+    <header class="catalog-header">
+      <div class="header-content">
+        <div class="logo">
+          <svg width="49.308" height="24" xmlns="http://www.w3.org/2000/svg">
+   <g fill="none">
+      <path
+         d="M11.758 12.066l7.992-4.599c1.752-1.204 2.19-3.722.985-5.474C19.641.461 17.56-.197 15.81.68L1.906 8.672l9.852 3.394z"
+         fill="#ea4335" />
+      <path
+         d="M17.78 24a3.925 3.925 0 003.94-3.942c0-1.423-.766-2.737-1.97-3.394L5.847 8.672c-1.97-1.094-4.27-.328-5.364 1.533-.986 1.86-.438 4.16 1.423 5.254l13.903 7.993c.547.438 1.204.548 1.97.548z"
+         fill="#4285f4" />
+      <path
+         d="M31.573 24c.657 0 1.423-.22 1.97-.548l13.904-7.992-9.743-3.504-8.21 4.708c-1.862 1.095-2.519 3.504-1.424 5.365.766 1.314 2.08 1.971 3.503 1.971z"
+         fill="#fbbc04" />
+      <path
+         d="M45.367 16.008a3.925 3.925 0 003.941-3.942c0-1.423-.766-2.737-1.97-3.394L33.543.679c-1.752-1.204-4.27-.766-5.474.986-1.204 1.752-.766 4.27.985 5.474.22.11.329.22.547.328l13.904 7.993c.547.328 1.204.548 1.86.548z"
+         fill="#0f9d58" />
+   </g>
+</svg>
+          <span class="logo-text">{$title}</span>
+        </div>
+        <div class="search-box">
+          <i class="material-icons search-icon">search</i>
+          <input type="text" 
+                 id="catalog-search" 
+                 placeholder="{if $searchPlaceholder}{$searchPlaceholder}{else}{msg desc="Placeholder text for search input"}Search{/msg}{/if}" 
+                 autocomplete="off">
+          <span class="search-shortcut">/</span>
+        </div>
+        <button class="theme-toggle" 
+                id="theme-toggle" 
+                aria-label="
+                  {msg desc="Button to toggle between light and dark theme"}
+                    Toggle theme
+                  {/msg}">
+          <i class="material-icons theme-toggle-icon">{$themeIcon}</i>
+        </button>
+      </div>
+    </header>
+
+    <main class="catalog-main">
+      <div class="hero">
+        <div class="hero-title-wrapper">
+          <svg width="49.308" height="24" xmlns="http://www.w3.org/2000/svg">
+   <g fill="none">
+      <path
+         d="M11.758 12.066l7.992-4.599c1.752-1.204 2.19-3.722.985-5.474C19.641.461 17.56-.197 15.81.68L1.906 8.672l9.852 3.394z"
+         fill="#ea4335" />
+      <path
+         d="M17.78 24a3.925 3.925 0 003.94-3.942c0-1.423-.766-2.737-1.97-3.394L5.847 8.672c-1.97-1.094-4.27-.328-5.364 1.533-.986 1.86-.438 4.16 1.423 5.254l13.903 7.993c.547.438 1.204.548 1.97.548z"
+         fill="#4285f4" />
+      <path
+         d="M31.573 24c.657 0 1.423-.22 1.97-.548l13.904-7.992-9.743-3.504-8.21 4.708c-1.862 1.095-2.519 3.504-1.424 5.365.766 1.314 2.08 1.971 3.503 1.971z"
+         fill="#fbbc04" />
+      <path
+         d="M45.367 16.008a3.925 3.925 0 003.941-3.942c0-1.423-.766-2.737-1.97-3.394L33.543.679c-1.752-1.204-4.27-.766-5.474.986-1.204 1.752-.766 4.27.985 5.474.22.11.329.22.547.328l13.904 7.993c.547.328 1.204.548 1.86.548z"
+         fill="#0f9d58" />
+   </g>
+</svg>
+          <h1 class="hero-title">{$title}</h1>
+        </div>
+        <p class="hero-description">{$description}</p>
+        <a href="https://github.com/googlecodelabs/tools" class="hero-link" target="_blank">
+          {msg desc="Link to codelab tools GitHub repository"}
+            Codelab tools on GitHub...
+          {/msg}
+        </a>
+      </div>
+
+      <div class="content-wrapper">
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <div class="main-panel">
+          <div id="no-results" class="no-results" style="display: none;">
+            <p>
+              {msg desc="Message shown when no codelabs match the search criteria"}
+                No codelabs found
+              {/msg}
+            </p>
+            <p class="no-results-hint">
+              {msg desc="Hint suggesting user to adjust filters when no results found"}
+                Try adjusting your filters or search query
+              {/msg}
+            </p>
+          </div>
+
+          <div id="codelabs-container" class="codelabs-grid"></div>
+          
+          <div id="pagination" class="pagination" style="display: none;"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+{/template}
+
+/**
+ * Filter sidebar
+ */
+{template .sidebar}
+  {@param categories: list<string>}
+  {@param tags: list<string>}
+  {@param authors: list<string>}
+
+  <div class="sort-section">
+    <h4>
+      {msg desc="Label for sort options dropdown"}
+        Sort By
+      {/msg}
+    </h4>
+      <select id="catalog-sort" class="filter-select">
+        <option value="title-asc">
+          {msg desc="Sort option to arrange codelabs alphabetically A-Z"}
+            Title (A-Z)
+          {/msg}
+        </option>
+        <option value="title-desc">
+          {msg desc="Sort option to arrange codelabs alphabetically Z-A"}
+            Title (Z-A)
+          {/msg}
+        </option>
+        <option value="updated-desc">
+          {msg desc="Sort option to show recently updated codelabs first"}
+            Recently Updated
+          {/msg}
+        </option>
+        <option value="updated-asc">
+          {msg desc="Sort option to show oldest codelabs first"}
+            Oldest First
+          {/msg}
+        </option>
+        <option value="duration-asc">
+          {msg desc="Sort option to show shortest duration codelabs first"}
+            Duration (Short)
+          {/msg}
+        </option>
+        <option value="duration-desc">
+          {msg desc="Sort option to show longest duration codelabs first"}
+            Duration (Long)
+          {/msg}
+        </option>
+      </select>
+    </div>
+
+    <hr>
+
+    <div class="sidebar-header">
+      <h3>
+        {msg desc="Header for filters section in sidebar"}
+          Filters
+        {/msg}
+      </h3>
+    </div>
+
+    <div class="filter-group">
+      <div class="filter-group-header">
+        <h4>
+          {msg desc="Label for categories filter group"}
+            Categories
+          {/msg}
+        </h4>
+        <button class="filter-clear" data-group="categories" aria-label="Clear category filters">
+          {msg desc="Button to clear all selected category filters"}
+            Clear
+          {/msg}
+        </button>
+      </div>
+      <div class="filter-checkboxes" id="categories-checkboxes">
+        {for $cat in $categories}
+          <div class="filter-checkbox-item">
+            <input type="checkbox" 
+                   id="category-{index($cat)}" 
+                   value="{$cat}" 
+                   data-group="categories">
+            <label for="category-{index($cat)}">{$cat}</label>
+          </div>
+        {/for}
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="filter-group">
+      <div class="filter-group-header">
+        <h4>
+          {msg desc="Label for tags filter group"}
+            Tags
+          {/msg}
+        </h4>
+        <button class="filter-clear" data-group="tags" aria-label="Clear tag filters">
+          {msg desc="Button to clear all selected tag filters"}
+            Clear
+          {/msg}
+        </button>
+      </div>
+      <div class="filter-checkboxes" id="tags-checkboxes">
+        {for $tag in $tags}
+          <div class="filter-checkbox-item">
+            <input type="checkbox" 
+                   id="tag-{index($tag)}" 
+                   value="{$tag}" 
+                   data-group="tags">
+            <label for="tag-{index($tag)}">{$tag}</label>
+          </div>
+        {/for}
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="filter-group">
+      <div class="filter-group-header">
+        <h4>
+          {msg desc="Label for authors filter group"}
+            Authors
+          {/msg}
+        </h4>
+        <button class="filter-clear" data-group="authors" aria-label="Clear author filters">
+          {msg desc="Button to clear all selected author filters"}
+            Clear
+          {/msg}
+        </button>
+      </div>
+      <div class="filter-checkboxes" id="authors-checkboxes">
+        {for $author in $authors}
+          <div class="filter-checkbox-item">
+            <input type="checkbox" 
+                   id="author-{index($author)}" 
+                   value="{$author}" 
+                   data-group="authors">
+            <label for="author-{index($author)}">{$author}</label>
+          </div>
+        {/for}
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="sidebar-footer">
+      <div id="sidebar-count" class="sidebar-count">
+        {msg desc="Loading message while codelabs are being fetched"}
+          Loading...
+        {/msg}
+      </div>
+      <button id="reset-all-filters" class="reset-all-btn">
+        {msg desc="Button to reset all filters and search"}
+          Reset All Filters
+        {/msg}
+      </button>
+    </div>
+{/template}
+
+/**
+ * Codelab cards grid
+ */
+{template .codelabCards}
+  {@param codelabs: list<[title:string, summary:string, url:string, duration:string, updated:string, categories:list<string>, icon:string]>}
+
+  {for $codelab in $codelabs}
+    <a href="{$codelab.url}" class="codelab-card">
+      <h3 class="card-title">{$codelab.title}</h3>
+      <div class="card-meta">
+        <span>{$codelab.duration ?: '–'}</span>
+        <span>{$codelab.updated ?: 'No date'}</span>
+      </div>
+      {if length($codelab.categories) > 0}
+        <div class="card-categories">
+          {for $cat in $codelab.categories}
+            <span class="card-category">{$cat}</span>
+          {/for}
+        </div>
+      {/if}
+      <p class="card-summary">{$codelab.summary}</p>
+      <div class="card-footer">
+        <i class="material-icons card-icon">{$codelab.icon}</i>
+        <button class="card-button">
+          {msg desc="Button to start a codelab"}
+            Start
+          {/msg}
+        </button>
+      </div>
+    </a>
+  {/for}
+{/template}

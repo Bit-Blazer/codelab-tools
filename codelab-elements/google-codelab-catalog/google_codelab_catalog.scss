@@ -1,0 +1,777 @@
+// Light theme colours
+$google-material-blue-600: #1A73E8;
+$google-material-blue-800: #185ABC;
+$google-material-grey-900: #212121;
+$google-material-grey-800: #3C4043;
+$google-material-grey-600: #80868B;
+$google-material-grey-300: #DADCE0;
+$google-material-grey-100: #F1F3F4;
+$google-material-grey-50: #F8F9FA;
+$white: #FFFFFF;
+
+// Dark theme colors
+$dark-background: #202124;
+$dark-surface: #292a2d;
+$dark-on-surface: #e8eaed;
+$dark-border: #5f6368;
+$dark-secondary: #9aa0a6;
+$dark-blue: #8ab4f8;
+$dark-blue-hover: #669df6;
+
+google-codelab-catalog {
+  display: block;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+google-codelab-catalog .catalog-container {
+  width: 100%;
+  min-height: 100vh;
+  background: $google-material-grey-50;
+}
+
+[data-theme="dark"] google-codelab-catalog .catalog-container {
+  background: $dark-background;
+  color: $dark-on-surface;
+}
+
+google-codelab-catalog .catalog-header {
+  background: $white;
+  border-bottom: 1px solid $google-material-grey-300;
+  box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, .3), 0px 2px 6px 2px rgba(60, 64, 67, .15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+[data-theme="dark"] google-codelab-catalog .catalog-header {
+  background: $dark-surface;
+  border-bottom-color: $dark-border;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .3), 0px 2px 6px 2px rgba(0, 0, 0, .15);
+}
+
+google-codelab-catalog .header-content {
+  padding: 8px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+google-codelab-catalog .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+google-codelab-catalog .logo-icon {
+  width: 32px;
+  height: 32px;
+  color: $google-material-blue-600;
+}
+
+google-codelab-catalog .logo-text {
+  font-family: 'Google Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: $google-material-grey-600;
+  margin: 0;
+}
+
+[data-theme="dark"] google-codelab-catalog .logo-text {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .search-box {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+google-codelab-catalog .search-box input {
+  width: 100%;
+  padding: 8px 40px 8px 40px;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  background: $white;
+  color: $google-material-grey-900;
+  font-size: 14px;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  transition: border-color 300ms ease-in-out;
+}
+
+[data-theme="dark"] google-codelab-catalog .search-box input {
+  background: $dark-surface;
+  color: $dark-on-surface;
+  border-color: $dark-border;
+}
+
+google-codelab-catalog .search-box input:focus {
+  outline: none;
+  border-color: $google-material-blue-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .search-box input:focus {
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .search-box input::placeholder {
+  color: $google-material-grey-600;
+}
+
+google-codelab-catalog .search-icon {
+  position: absolute;
+  left: 12px;
+  color: $google-material-grey-600;
+  font-size: 20px;
+}
+
+[data-theme="dark"] google-codelab-catalog .search-icon {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .search-shortcut {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  padding: 2px 6px;
+  background: $google-material-grey-100;
+  color: $google-material-grey-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .search-shortcut {
+  background: $dark-background;
+  border-color: $dark-border;
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .theme-toggle {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: $google-material-grey-600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] google-codelab-catalog .theme-toggle {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .catalog-main {
+  padding: 0 32px;
+}
+
+google-codelab-catalog .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 64px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+google-codelab-catalog .hero-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+google-codelab-catalog .hero-title {
+  font-family: 'Google Sans', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: $google-material-grey-600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] google-codelab-catalog .hero-title {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .hero-description {
+  font-size: 16px;
+  line-height: 24px;
+  color: $google-material-grey-600;
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+[data-theme="dark"] google-codelab-catalog .hero-description {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .hero-link {
+  color: $google-material-blue-600;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 300ms ease-in-out;
+}
+
+[data-theme="dark"] google-codelab-catalog .hero-link {
+  color: $dark-blue;
+}
+
+google-codelab-catalog .hero-link:hover {
+  color: $google-material-blue-800;
+  text-decoration: underline;
+}
+
+[data-theme="dark"] google-codelab-catalog .hero-link:hover {
+  color: $dark-blue-hover;
+}
+
+google-codelab-catalog .content-wrapper {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  padding-bottom: 64px;
+}
+
+google-codelab-catalog .sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: $white;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  padding: 24px;
+  height: fit-content;
+  position: sticky;
+  top: 64px;
+}
+
+[data-theme="dark"] google-codelab-catalog .sidebar {
+  background: $dark-surface;
+  border-color: $dark-border;
+}
+
+google-codelab-catalog .sidebar hr {
+  border: none;
+  border-top: 1px solid $google-material-grey-300;
+  margin: 24px 0;
+}
+
+[data-theme="dark"] google-codelab-catalog .sidebar hr {
+  border-top-color: $dark-border;
+}
+
+google-codelab-catalog .sort-section {
+  margin-bottom: 0;
+}
+
+google-codelab-catalog .sort-section h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: $google-material-grey-900;
+  margin: 0 0 8px 0;
+}
+
+[data-theme="dark"] google-codelab-catalog .sort-section h4 {
+  color: $dark-on-surface;
+}
+
+google-codelab-catalog .filter-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  background: $white;
+  color: $google-material-grey-900;
+  font-size: 14px;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  cursor: pointer;
+  transition: border-color 300ms ease-in-out;
+}
+
+[data-theme="dark"] google-codelab-catalog .filter-select {
+  background: $dark-background;
+  color: $dark-on-surface;
+  border-color: $dark-border;
+}
+
+google-codelab-catalog .filter-select:hover {
+  border-color: $google-material-blue-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .filter-select:hover {
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .filter-select:focus {
+  outline: none;
+  border-color: $google-material-blue-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .filter-select:focus {
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .sidebar-header {
+  margin-bottom: 16px;
+}
+
+google-codelab-catalog .sidebar-header h3 {
+  font-family: 'Google Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: $google-material-grey-900;
+  margin: 0;
+}
+
+[data-theme="dark"] google-codelab-catalog .sidebar-header h3 {
+  color: $dark-on-surface;
+}
+
+google-codelab-catalog .filter-group {
+  margin-bottom: 0;
+}
+
+google-codelab-catalog .filter-group:last-of-type {
+  margin-bottom: 0;
+}
+
+google-codelab-catalog .filter-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+google-codelab-catalog .filter-group-header h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: $google-material-grey-900;
+  margin: 0;
+}
+
+[data-theme="dark"] google-codelab-catalog .filter-group-header h4 {
+  color: $dark-on-surface;
+}
+
+google-codelab-catalog .filter-clear {
+  background: none;
+  border: none;
+  color: $google-material-blue-600;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 300ms ease-in-out;
+}
+
+[data-theme="dark"] google-codelab-catalog .filter-clear {
+  color: $dark-blue;
+}
+
+google-codelab-catalog .filter-clear:hover {
+  color: $google-material-blue-800;
+  text-decoration: underline;
+}
+
+[data-theme="dark"] google-codelab-catalog .filter-clear:hover {
+  color: $dark-blue-hover;
+}
+
+google-codelab-catalog .filter-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+google-codelab-catalog .filter-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+google-codelab-catalog .filter-checkbox-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+google-codelab-catalog .filter-checkbox-item label {
+  font-size: 14px;
+  color: $google-material-grey-900;
+  cursor: pointer;
+  flex: 1;
+}
+
+[data-theme="dark"] google-codelab-catalog .filter-checkbox-item label {
+  color: $dark-on-surface;
+}
+
+google-codelab-catalog .sidebar-footer {
+  margin-top: 0;
+}
+
+google-codelab-catalog .sidebar-count {
+  font-size: 14px;
+  color: $google-material-grey-600;
+  margin-bottom: 12px;
+}
+
+[data-theme="dark"] google-codelab-catalog .sidebar-count {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .reset-all-btn {
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  background: $white;
+  color: $google-material-blue-600;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+[data-theme="dark"] google-codelab-catalog .reset-all-btn {
+  background: $dark-background;
+  color: $dark-blue;
+  border-color: $dark-border;
+}
+
+google-codelab-catalog .reset-all-btn:hover {
+  background: $google-material-grey-100;
+  border-color: $google-material-blue-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .reset-all-btn:hover {
+  background: $dark-surface;
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .main-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+google-codelab-catalog .codelabs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+google-codelab-catalog .codelab-card {
+  background: $white;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 300ms ease-in-out;
+}
+
+[data-theme="dark"] google-codelab-catalog .codelab-card {
+  background: $dark-surface;
+  border-color: $dark-border;
+}
+
+google-codelab-catalog .codelab-card:hover {
+  border-color: $google-material-blue-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .codelab-card:hover {
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .card-title {
+  font-family: 'Google Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: $google-material-grey-900;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] google-codelab-catalog .card-title {
+  color: $dark-on-surface;
+}
+
+google-codelab-catalog .card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: $google-material-grey-600;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+[data-theme="dark"] google-codelab-catalog .card-meta {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .card-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+google-codelab-catalog .card-category {
+  display: inline-block;
+  padding: 4px 12px;
+  background: $google-material-grey-100;
+  color: $google-material-grey-600;
+  font-size: 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+[data-theme="dark"] google-codelab-catalog .card-category {
+  background: $dark-background;
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .card-summary {
+  color: $google-material-grey-600;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+[data-theme="dark"] google-codelab-catalog .card-summary {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+google-codelab-catalog .card-icon {
+  color: $google-material-grey-600;
+  font-size: 24px;
+}
+
+[data-theme="dark"] google-codelab-catalog .card-icon {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .card-button {
+  background: transparent;
+  color: $google-material-blue-600;
+  border: 1px solid $google-material-grey-300;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  font-family: 'Roboto', 'Noto', sans-serif;
+}
+
+[data-theme="dark"] google-codelab-catalog .card-button {
+  color: $dark-blue;
+  border-color: $dark-border;
+}
+
+google-codelab-catalog .card-button:hover {
+  background: #E8F0FE;
+  border-color: $google-material-blue-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .card-button:hover {
+  background: rgba(138, 180, 248, 0.1);
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .no-results {
+  text-align: center;
+  padding: 64px 32px;
+  color: $google-material-grey-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .no-results {
+  color: $dark-secondary;
+}
+
+google-codelab-catalog .no-results p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+google-codelab-catalog .no-results-hint {
+  font-size: 14px;
+}
+
+google-codelab-catalog .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+  padding: 24px 0;
+}
+
+google-codelab-catalog .pagination-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 8px 12px;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  background: $white;
+  color: $google-material-grey-900;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] google-codelab-catalog .pagination-btn {
+  background: $dark-surface;
+  color: $dark-on-surface;
+  border-color: $dark-border;
+}
+
+google-codelab-catalog .pagination-btn:hover:not(:disabled):not(.active) {
+  background: $google-material-grey-100;
+  border-color: $google-material-blue-600;
+}
+
+[data-theme="dark"] google-codelab-catalog .pagination-btn:hover:not(:disabled):not(.active) {
+  background: $dark-background;
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .pagination-btn.active {
+  background: $google-material-blue-600;
+  color: $white;
+  border-color: $google-material-blue-600;
+  cursor: default;
+}
+
+[data-theme="dark"] google-codelab-catalog .pagination-btn.active {
+  background: $dark-blue;
+  border-color: $dark-blue;
+}
+
+google-codelab-catalog .pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+google-codelab-catalog .pagination-prev,
+google-codelab-catalog .pagination-next {
+  padding: 8px 16px;
+}
+
+google-codelab-catalog .pagination-dots {
+  color: $google-material-grey-600;
+  padding: 0 4px;
+  font-size: 14px;
+}
+
+[data-theme="dark"] google-codelab-catalog .pagination-dots {
+  color: $dark-secondary;
+}
+
+@media (max-width: 768px) {
+  google-codelab-catalog .header-content {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+  }
+
+
+  google-codelab-catalog .catalog-main {
+    padding: 0 16px;
+  }
+
+  google-codelab-catalog .hero {
+    padding: 48px 0;
+  }
+
+  google-codelab-catalog .hero-title {
+    font-size: 32px;
+  }
+
+  google-codelab-catalog .hero-description {
+    font-size: 14px;
+  }
+
+  google-codelab-catalog .content-wrapper {
+    flex-direction: column;
+  }
+
+  google-codelab-catalog .sidebar {
+    position: static;
+    width: 100%;
+  }
+
+  google-codelab-catalog .codelabs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  google-codelab-catalog .card-title {
+    font-size: 18px;
+  }
+
+  google-codelab-catalog .pagination {
+    gap: 4px;
+    margin-top: 32px;
+    padding: 16px 0;
+    flex-wrap: wrap;
+  }
+
+  google-codelab-catalog .pagination-btn {
+    min-width: 36px;
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  google-codelab-catalog .pagination-prev,
+  google-codelab-catalog .pagination-next {
+    padding: 6px 12px;
+    font-size: 0;
+  }
+
+  google-codelab-catalog .pagination-prev::before {
+    content: '‹';
+    font-size: 18px;
+  }
+
+  google-codelab-catalog .pagination-next::after {
+    content: '›';
+    font-size: 18px;
+  }
+
+  google-codelab-catalog .pagination-page:nth-child(n+5) {
+    display: none;
+  }
+
+  google-codelab-catalog .pagination-page.active {
+    display: flex !important;
+  }
+
+  google-codelab-catalog .pagination-dots {
+    display: none;
+  }
+}

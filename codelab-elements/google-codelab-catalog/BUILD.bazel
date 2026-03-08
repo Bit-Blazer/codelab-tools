@@ -1,0 +1,52 @@
+package(default_visibility = ["//visibility:public"])
+
+load("//codelab-elements/tools:defs.bzl",
+     "closure_js_library", "closure_js_binary" )
+load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_template_library")
+load("@io_bazel_rules_sass//sass:sass.bzl", "sass_binary", "sass_library")
+
+filegroup(
+    name = "google_codelab_catalog_files",
+    srcs = glob([
+        "*.html",
+    ]) + [
+        ":google_codelab_catalog_scss_bin",
+        ":google_codelab_catalog_bin",
+    ],
+)
+
+# Codelab Catalog.
+closure_js_library(
+    name = "google_codelab_catalog",
+    srcs = [
+        "google_codelab_catalog.js",
+        "google_codelab_catalog_def.js",
+    ],
+    deps = [
+        "@io_bazel_rules_closure//closure/library",
+        ":google_codelab_catalog_soy",
+    ]
+)
+
+# Compiled version of GoogleCodelabCatalog element, suitable for distribution.
+closure_js_binary(
+    name = "google_codelab_catalog_bin",
+    entry_points = ["googlecodelabs.CodelabCatalogDef"],
+    deps = [":google_codelab_catalog"],
+)
+
+sass_library(
+    name = "google_codelab_catalog_scss",
+    srcs = ["google_codelab_catalog.scss"],
+)
+
+sass_binary(
+    name = "google_codelab_catalog_scss_bin",
+    src = "google_codelab_catalog.scss",
+    deps = [":google_codelab_catalog_scss"],
+)
+
+closure_js_template_library(
+    name = "google_codelab_catalog_soy",
+    srcs = ["google_codelab_catalog.soy"],
+)
