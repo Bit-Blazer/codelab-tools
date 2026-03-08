@@ -14,50 +14,31 @@
 
 SHA     := $(shell git rev-parse --short HEAD)
 DATE    := $(shell TZ=UTC date +%FT%T)Z
-VERSION := $(shell cat VERSION)-$(DATE)-$(SHA)
+VERSION := $(shell cat VERSION)
 
-OUTDIRNAME := bin
-OUTDIR := ./$(OUTDIRNAME)
-OUTRELEASE := gs://claat
-RELEASES=$(OUTDIR)/claat-darwin-amd64 \
-	 $(OUTDIR)/claat-linux-amd64 \
-	 $(OUTDIR)/claat-linux-386 \
-	 $(OUTDIR)/claat-windows-amd64.exe \
-	 $(OUTDIR)/claat-windows-386.exe
+APP = claat
+OUTDIR := bin
 
-ifeq ($(OS), Windows_NT)
-		SRCS = $(shell dir *.go /b/s) 
-	else
-		SRCS = $(shell find . -name '*.go') 
-endif
+PLATFORMS = linux/amd64 linux/arm64 linux/386 windows/amd64 windows/arm64 windows/386 darwin/amd64 darwin/arm64
 
-all: $(OUTDIR)/claat
-
-$(OUTDIR)/claat: $(SRCS) VERSION
-	go build -o $@ -ldflags "-X main.version=$(VERSION)"
-
-serve: $(OUTDIR)/claat
-	mkdir -p $(OUTDIR)/deps
-	cd ../; \
-	    bazel build :bundle; \
-	    mv -f bazel-genfiles/bundle.zip claat/$(OUTDIRNAME)/deps
-	unzip -o $(OUTDIR)/deps/bundle.zip -d $(OUTDIR)/deps/codelab-elements
-	cd bin; ./claat serve
-
-release: $(RELEASES)
-	echo $(VERSION) > $(OUTDIR)/VERSION
-	cd $(OUTDIR) && sha1sum claat* > sha1sum.txt
-
-clean:
-	rm -rf $(OUTDIR) render/tmpldata.go 
-
-$(OUTDIR)/claat-%: GOOS=$(firstword $(subst -, ,$*))
-$(OUTDIR)/claat-%: GOARCH=$(subst .exe,,$(word 2,$(subst -, ,$*)))
-$(OUTDIR)/claat-%: $(SRCS) VERSION
-	CGO_ENABLED=0 GOOS=$(GOOS) GOARCH=$(GOARCH) go build \
-		-buildmode exe \
-		-ldflags "-X main.version=$(VERSION) -s -w" \
-		-o $@
-
-%/tmpldata.go: %/gen-tmpldata.go %/template.html %/template.md %/template-offline.html
-	cd $* && go generate
+release:
+	rm -rf $(OUTDIR)
+	mkdir -p $(OUTDIR)
+	for p in $(PLATFORMS); do \
+		OS=$${p%/*}; \
+		ARCH=$${p#*/}; \
+		OUT=$(APP); \
+		if [ "$$OS" = "windows" ]; then OUT=$(APP).exe; fi; \
+		FOLDER=$(APP)-v$(VERSION)-$${OS}-$${ARCH}; \
+		mkdir -p $(OUTDIR)/$$FOLDER; \
+		CGO_ENABLED=0 GOOS=$$OS GOARCH=$$ARCH go build -ldflags "-X main.version=$(VERSION)-$(DATE)-$(SHA) -s -w" -o $(OUTDIR)/$$FOLDER/$$OUT; \
+		cp ../LICENSE $(OUTDIR)/$$FOLDER/; \
+		cp README.md $(OUTDIR)/$$FOLDER/; \
+		if [ "$$OS" = "windows" ]; then \
+			(cd $(OUTDIR) && zip -r $$FOLDER.zip $$FOLDER); \
+		else \
+			(cd $(OUTDIR) && tar -czf $$FOLDER.tar.gz $$FOLDER); \
+		fi; \
+	done
+	echo $(VERSION)-$(DATE)-$(SHA) > $(OUTDIR)/VERSION
+	cd $(OUTDIR) && sha256sum $(APP)-*.tar.gz $(APP)-*.zip > checksums.txt

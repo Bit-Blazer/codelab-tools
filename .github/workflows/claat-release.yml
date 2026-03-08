@@ -31,7 +31,7 @@ jobs:
           path: |
             claat/bin/claat-*
             claat/bin/VERSION
-            claat/bin/sha1sum.txt
+            claat/bin/checksums.txt
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
@@ -41,4 +41,4 @@ jobs:
           files: |
             claat/bin/claat-*
             claat/bin/VERSION
-            claat/bin/sha1sum.txt
+            claat/bin/checksums.txt
