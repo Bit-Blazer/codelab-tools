@@ -1,0 +1,751 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Regular Expressions: Complete Crash Course</title>
+  <meta name="description" content="A comprehensive 20-minute crash course covering all essential regex concepts">
+  <meta name="keywords" content="tag_web,category_regex,category_programming,category_tutorial">
+  <meta name="authors" content="Kamil Hassan(https://github.com/Bit-Blazer)">
+  <meta name="duration" content="18">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/codelab-elements.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/monokai.min.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics ga4id="G-XXXXXXXXXX"></google-codelab-analytics>
+  <google-codelab codelab-ga4id=""
+                  id="regex-complete-crash-course"
+                  codelab-title="Regular Expressions: Complete Crash Course"
+                  environment="web"
+                  feedback-link="https://github.com/Bit-Blazer/regex-codelab/issues/new"
+                  home-url="/codelab-tools/">
+    
+      <google-codelab-step label="Introduction" duration="2">
+        
+        <google-codelab-about 
+                      codelab-title="Regular Expressions: Complete Crash Course"
+                      authors='Kamil Hassan(https://github.com/Bit-Blazer)'
+                      last-updated="2026-03-08T17:54:08Z">
+        </google-codelab-about>
+        
+        <h2 is-upgraded>What is Regex?</h2>
+<p>Regular Expressions (regex) are patterns used to match character combinations in strings.</p>
+<p><strong>Use cases:</strong></p>
+<ul>
+<li>Validation (email, phone, password)</li>
+<li>Search and replace</li>
+<li>Text parsing and extraction</li>
+<li>Log analysis</li>
+<li>Data cleaning</li>
+</ul>
+<p><strong>Testing tools: </strong><a href="https://regex101.com" target="_blank">regex101.com</a>, <a href="https://regexr.com" target="_blank">regexr.com</a></p>
+<h2 is-upgraded>Using Regex in JavaScript</h2>
+<p><strong>Creating patterns:</strong></p>
+<pre><code language="language-javascript" class="language-javascript">const regex1 = /pattern/flags;           // Literal notation
+const regex2 = new RegExp(&#39;pattern&#39;, &#39;flags&#39;);  // Constructor
+</code></pre>
+<p><strong>Key methods:</strong></p>
+<ul>
+<li><p><strong><code>test()</code></strong> - Returns true/false if pattern matches</p>
+<pre><code language="language-javascript" class="language-javascript">/\d+/.test(&#34;abc123&#34;); // true
+</code></pre>
+</li>
+<li><p><strong><code>exec()</code></strong> - Returns match details or null</p>
+<pre><code language="language-javascript" class="language-javascript">/\d+/.exec(&#34;abc123&#34;); // [&#39;123&#39;, index: 3, ...]
+</code></pre>
+</li>
+<li><p><strong><code>replace()</code></strong> - Find and replace</p>
+<pre><code language="language-javascript" class="language-javascript">&#34;hello&#34;.replace(/l/g, &#34;L&#34;); // &#39;heLLo&#39;
+</code></pre>
+</li>
+<li><p><strong><code>search()</code></strong> - Returns index of first match</p>
+<pre><code language="language-javascript" class="language-javascript">&#34;abc123&#34;.search(/\d/); // 3
+</code></pre>
+</li>
+<li><p><strong><code>split()</code></strong> - Split string by pattern</p>
+<pre><code language="language-javascript" class="language-javascript">&#34;a1b2c3&#34;.split(/\d/); // [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;&#39;]
+</code></pre>
+</li>
+</ul>
+<h2 is-upgraded>Using Regex in Python</h2>
+<p><strong>Creating patterns:</strong></p>
+<pre><code language="language-python" class="language-python">import re
+pattern = re.compile(r&#39;pattern&#39;, flags)  # Compiled (recommended)
+# Or use directly in functions
+</code></pre>
+<p><strong>Key methods:</strong></p>
+<ul>
+<li><p><strong><code>re.search()</code></strong> - Find first match anywhere</p>
+<pre><code language="language-python" class="language-python">re.search(r&#39;\d+&#39;, &#39;abc123&#39;)  # Match object
+</code></pre>
+</li>
+<li><p><strong><code>re.match()</code></strong> - Match from beginning only</p>
+<pre><code language="language-python" class="language-python">re.match(r&#39;\d+&#39;, &#39;123abc&#39;)  # Match object
+</code></pre>
+</li>
+<li><p><strong><code>re.fullmatch()</code></strong> - Match entire string</p>
+<pre><code language="language-python" class="language-python">re.fullmatch(r&#39;\d+&#39;, &#39;123&#39;)  # Match object
+</code></pre>
+</li>
+<li><p><strong><code>re.findall()</code></strong> - Return list of all matches</p>
+<pre><code language="language-python" class="language-python">re.findall(r&#39;\d+&#39;, &#39;a1b2c3&#39;)  # [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]
+</code></pre>
+</li>
+<li><p><strong><code>re.finditer()</code></strong> - Iterator of match objects</p>
+<pre><code language="language-python" class="language-python">for m in re.finditer(r&#39;\d+&#39;, &#39;a1b2&#39;):
+    print(m.group())
+</code></pre>
+</li>
+<li><p><strong><code>re.sub()</code></strong> - Find and replace</p>
+<pre><code language="language-python" class="language-python">re.sub(r&#39;\d&#39;, &#39;#&#39;, &#39;a1b2&#39;)  # &#39;a#b#&#39;
+</code></pre>
+</li>
+<li><p><strong><code>re.split()</code></strong> - Split by pattern</p>
+<pre><code language="language-python" class="language-python">re.split(r&#39;\d&#39;, &#39;a1b2c&#39;)  # [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+</code></pre>
+</li>
+</ul>
+<p><strong>Match object methods:</strong></p>
+<ul>
+<li><code>group()</code> - Get matched text</li>
+<li><code>start()</code>, <code>end()</code> - Get match positions</li>
+<li><code>groups()</code> - Get all captured groups</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Fundamentals &amp; Literal Matching" duration="1">
+        
+        <h2 is-upgraded>Literal Characters</h2>
+<p><code>hello</code> matches &#34;hello&#34; exactly</p>
+<h2 is-upgraded>Special Characters (Metacharacters)</h2>
+<p>These characters have special meaning in regex. To match them literally, escape with <code>\</code>:</p>
+<p><strong><code>.</code></strong><strong> (dot)</strong> - Matches any single character except newline</p>
+<ul>
+<li><code>a.c</code> matches &#34;abc&#34;, &#34;a1c&#34;, &#34;a#c&#34;</li>
+</ul>
+<p><strong><code>*</code></strong><strong> (asterisk)</strong> - Matches 0 or more of the preceding element</p>
+<ul>
+<li><code>ab*c</code> matches &#34;ac&#34;, &#34;abc&#34;, &#34;abbbbc&#34;</li>
+</ul>
+<p><strong><code>+</code></strong><strong> (plus)</strong> - Matches 1 or more of the preceding element</p>
+<ul>
+<li><code>ab+c</code> matches &#34;abc&#34;, &#34;abbc&#34; (but NOT &#34;ac&#34;)</li>
+</ul>
+<p><strong><code>?</code></strong><strong> (question mark)</strong> - Matches 0 or 1 of the preceding element (optional)</p>
+<ul>
+<li><code>colou?r</code> matches &#34;color&#34; or &#34;colour&#34;</li>
+</ul>
+<p><strong><code>[ ]</code></strong><strong> (square brackets)</strong> - Defines a character class (match any one character inside)</p>
+<ul>
+<li><code>[abc]</code> matches &#34;a&#34;, &#34;b&#34;, or &#34;c&#34;</li>
+<li><code>[a-z]</code> matches any lowercase letter</li>
+</ul>
+<p><strong><code>{ }</code></strong><strong> (curly braces)</strong> - Specifies exact quantity</p>
+<ul>
+<li><code>\d{3}</code> matches exactly 3 digits</li>
+<li><code>\d{2,4}</code> matches 2 to 4 digits</li>
+</ul>
+<p><strong><code>( )</code></strong><strong> (parentheses)</strong> - Groups patterns and captures them</p>
+<ul>
+<li><code>(ab)+</code> matches &#34;ab&#34;, &#34;abab&#34;, &#34;ababab&#34;</li>
+<li>Captures the match for later use</li>
+</ul>
+<p><strong><code>^</code></strong><strong> (caret)</strong> - Matches the start of a line/string</p>
+<ul>
+<li><code>^hello</code> only matches &#34;hello&#34; at the beginning</li>
+</ul>
+<p><strong><code>$</code></strong><strong> (dollar)</strong> - Matches the end of a line/string</p>
+<ul>
+<li><code>world$</code> only matches &#34;world&#34; at the end</li>
+</ul>
+<p><strong><code>|</code></strong><strong> (pipe)</strong> - OR operator (alternation)</p>
+<ul>
+<li><code>cat|dog</code> matches &#34;cat&#34; or &#34;dog&#34;</li>
+</ul>
+<p><strong><code>\</code></strong><strong> (backslash)</strong> - Escapes special characters or creates special sequences</p>
+<ul>
+<li><code>\.</code> matches a literal period</li>
+<li><code>\d</code> matches any digit</li>
+<li><code>\w</code> matches word characters</li>
+<li><code>\$</code> matches a dollar sign</li>
+<li><code>\(</code> matches opening parenthesis</li>
+<li><code>\*</code> matches an asterisk</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Character Classes" duration="2">
+        
+        <h2 is-upgraded>Predefined Classes</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Pattern</p>
+</td><td colspan="1" rowspan="1"><p>Matches</p>
+</td><td colspan="1" rowspan="1"><p>Opposite</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>\d</code></p>
+</td><td colspan="1" rowspan="1"><p>Any digit <code>[0-9]</code></p>
+</td><td colspan="1" rowspan="1"><p><code>\D</code> (non-digit)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>\w</code></p>
+</td><td colspan="1" rowspan="1"><p>Word char <code>[a-zA-Z0-9_]</code></p>
+</td><td colspan="1" rowspan="1"><p><code>\W</code> (non-word)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>\s</code></p>
+</td><td colspan="1" rowspan="1"><p>Whitespace (space, tab, newline) <code>[\t \n\v\f\r]</code></p>
+</td><td colspan="1" rowspan="1"><p><code>\S</code> (non-whitespace)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>.</code></p>
+</td><td colspan="1" rowspan="1"><p>Any character (except newline) <code>[^\n]</code></p>
+</td><td colspan="1" rowspan="1"><p>N/A</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Custom Character Classes</h2>
+<ul>
+<li><code>[abc]</code> - matches a, b, or c</li>
+<li><code>[a-z]</code> - matches any lowercase letter</li>
+<li><code>[0-9]</code> - matches any digit</li>
+<li><code>[a-zA-Z0-9]</code> - alphanumeric</li>
+<li><code>[^abc]</code> - matches anything EXCEPT a, b, or c (negation)</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>[aeiou]</code> - vowels</li>
+<li><code>[^aeiou]</code> - consonants</li>
+<li><code>[0-9a-fA-F]</code> - hexadecimal digits</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Quantifiers" duration="2">
+        
+        <h2 is-upgraded>Basic Quantifiers</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Quantifier</p>
+</td><td colspan="1" rowspan="1"><p>Meaning</p>
+</td><td colspan="1" rowspan="1"><p>Example</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>*</code></p>
+</td><td colspan="1" rowspan="1"><p>0 or more <code>{0, }</code></p>
+</td><td colspan="1" rowspan="1"><p><code>a*</code> matches &#34;&#34;, &#34;a&#34;, &#34;aaa&#34;</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>+</code></p>
+</td><td colspan="1" rowspan="1"><p>1 or more <code>{1, }</code></p>
+</td><td colspan="1" rowspan="1"><p><code>a+</code> matches &#34;a&#34;, &#34;aaa&#34; (not &#34;&#34;)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>?</code></p>
+</td><td colspan="1" rowspan="1"><p>0 or 1 (optional) <code>{0, 1}</code></p>
+</td><td colspan="1" rowspan="1"><p><code>colou?r</code> matches &#34;color&#34; or &#34;colour&#34;</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>{n}</code></p>
+</td><td colspan="1" rowspan="1"><p>Exactly n</p>
+</td><td colspan="1" rowspan="1"><p><code>\d{3}</code> matches &#34;123&#34;</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>{n,}</code></p>
+</td><td colspan="1" rowspan="1"><p>n or more</p>
+</td><td colspan="1" rowspan="1"><p><code>\d{2,}</code> matches &#34;12&#34;, &#34;123&#34;, &#34;1234&#34;</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>{n,m}</code></p>
+</td><td colspan="1" rowspan="1"><p>Between n and m</p>
+</td><td colspan="1" rowspan="1"><p><code>\d{2,4}</code> matches &#34;12&#34;, &#34;123&#34;, &#34;1234&#34;</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Greedy vs Lazy</h2>
+<ul>
+<li><strong>Greedy</strong> (default): Match as much as possible <ul>
+<li><code>.*</code> in &#34;abc123xyz&#34; matches entire string</li>
+</ul>
+</li>
+<li><strong>Lazy</strong> (add <code>?</code>): Match as little as possible <ul>
+<li><code>.*?</code> matches smallest possible</li>
+</ul>
+</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Anchors &amp; Boundaries" duration="2">
+        
+        <h2 is-upgraded>Position Anchors</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Anchor</p>
+</td><td colspan="1" rowspan="1"><p>Matches</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>^</code></p>
+</td><td colspan="1" rowspan="1"><p>Start of line/string</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>$</code></p>
+</td><td colspan="1" rowspan="1"><p>End of line/string</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>\A</code></p>
+</td><td colspan="1" rowspan="1"><p>Start of string (absolute)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>\Z</code></p>
+</td><td colspan="1" rowspan="1"><p>End of string (absolute)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>\b</code></p>
+</td><td colspan="1" rowspan="1"><p>Word boundary</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>\B</code></p>
+</td><td colspan="1" rowspan="1"><p>Non-word boundary</p>
+</td></tr>
+</table>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>^hello</code> - &#34;hello&#34; at start</li>
+<li><code>world$</code> - &#34;world&#34; at end</li>
+<li><code>^hello world$</code> - exact match entire line</li>
+<li><code>\bcat\b</code> - &#34;cat&#34; as whole word (not in &#34;category&#34;)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Groups &amp; Capturing" duration="2">
+        
+        <h2 is-upgraded>Capturing Groups</h2>
+<p><code>(pattern)</code> - Captures matched text for later use</p>
+<p><strong>Example: </strong><code>(\d{3})-(\d{4})</code> in &#34;555-1234&#34;</p>
+<ul>
+<li>Group 1: &#34;555&#34;</li>
+<li>Group 2: &#34;1234&#34;</li>
+</ul>
+<h2 is-upgraded>Non-Capturing Groups</h2>
+<p><code>(?:pattern)</code> - Groups without capturing (better performance)</p>
+<p><strong>Example: </strong><code>(?:http|https)://</code> - matches protocol without capturing</p>
+<h2 is-upgraded>Named Groups</h2>
+<p><code>(?&lt;name&gt;pattern)</code> or <code>(?P&lt;name&gt;pattern)</code> (Python)</p>
+<p><strong>Example: </strong><code>(?&lt;area&gt;\d{3})-(?&lt;number&gt;\d{4})</code></p>
+<p><strong>Practical Example - Name Conversion:</strong></p>
+<p>Convert &#34;John Doe&#34; to &#34;Doe, John&#34;:</p>
+<p><strong>JavaScript:</strong></p>
+<pre><code language="language-javascript" class="language-javascript">const name = &#34;John Doe&#34;;
+const result = name.replace(/(?&lt;first&gt;\w+)\s(?&lt;last&gt;\w+)/, &#34;$&lt;last&gt;, $&lt;first&gt;&#34;);
+// Result: &#34;Doe, John&#34;
+</code></pre>
+<p><strong>Python:</strong></p>
+<pre><code language="language-python" class="language-python">import re
+name = &#34;John Doe&#34;
+result = re.sub(r&#39;(?P&lt;first&gt;\w+)\s(?P&lt;last&gt;\w+)&#39;, r&#39;\g&lt;last&gt;, \g&lt;first&gt;&#39;, name)
+# Result: &#34;Doe, John&#34;
+</code></pre>
+<p><strong>Date Format Conversion:</strong></p>
+<p>Convert &#34;25-12-2024&#34; (DD-MM-YYYY) to &#34;2024-12-25&#34; (YYYY-MM-DD):</p>
+<p><strong>JavaScript:</strong></p>
+<pre><code language="language-javascript" class="language-javascript">const date = &#34;25-12-2024&#34;;
+const result = date.replace(
+  /(?&lt;day&gt;\d{2})-(?&lt;month&gt;\d{2})-(?&lt;year&gt;\d{4})/,
+  &#34;$&lt;year&gt;-$&lt;month&gt;-$&lt;day&gt;&#34;
+);
+// Result: &#34;2024-12-25&#34;
+</code></pre>
+<p><strong>Python:</strong></p>
+<pre><code language="language-python" class="language-python">import re
+date = &#34;25-12-2024&#34;
+result = re.sub(r&#39;(?P&lt;day&gt;\d{2})-(?P&lt;month&gt;\d{2})-(?P&lt;year&gt;\d{4})&#39;, r&#39;\g&lt;year&gt;-\g&lt;month&gt;-\g&lt;day&gt;&#39;, date)
+# Result: &#34;2024-12-25&#34;
+</code></pre>
+<h2 is-upgraded>Backreferences</h2>
+<p>Reference captured groups:</p>
+<ul>
+<li><code>\1</code>, <code>\2</code>, <code>\3</code> - by number</li>
+<li><code>\k&lt;name&gt;</code> - by name</li>
+</ul>
+<p><strong>Example 1: Find Repeated Words</strong></p>
+<p><code>(\w+)\s\1</code> matches repeated words like &#34;hello hello&#34;</p>
+<pre><code language="language-javascript" class="language-javascript">// JavaScript
+&#34;hello hello world&#34;.match(/(\w+)\s\1/);
+// Matches: &#34;hello hello&#34;
+</code></pre>
+<p><strong>Example 2: Match HTML Tags</strong></p>
+<p><code>&lt;(\w+)&gt;.*?&lt;/\1&gt;</code> matches opening and closing tags</p>
+<pre><code language="language-javascript" class="language-javascript">// JavaScript - matches paired tags
+&#34;&lt;div&gt;content&lt;/div&gt;&#34;.match(/&lt;(\w+)&gt;.*?&lt;\/\1&gt;/);
+// Matches: &#34;&lt;div&gt;content&lt;/div&gt;&#34;
+
+&#34;&lt;h1&gt;title&lt;/h2&gt;&#34;.match(/&lt;(\w+)&gt;.*?&lt;\/\1&gt;/);
+// No match (tags don&#39;t match)
+</code></pre>
+<p><strong>Example 3: Find Repeated Characters</strong></p>
+<p><code>(\w)\1+</code> matches consecutive repeated characters</p>
+<pre><code language="language-python" class="language-python"># Python - find double letters
+re.findall(r&#39;(\w)\1+&#39;, &#39;hello bookkeeper&#39;)
+# Returns: [&#39;l&#39;, &#39;o&#39;, &#39;k&#39;, &#39;e&#39;]
+</code></pre>
+<p><strong>Example 4: Match Quoted Strings (Same Quote Type)</strong></p>
+<p><code>([&#39;&#34;])(.*?)\1</code> matches strings with matching quotes</p>
+<pre><code language="language-javascript" class="language-javascript">// JavaScript
+&#34;He said \&#34;hello\&#34; and she said &#39;hi&#39;&#34;.match(/([&#39;&#34;])(.*?)\1/g);
+// Matches: [&#39;&#34;hello&#34;&#39;, &#34;&#39;hi&#39;&#34;]
+// Ensures opening and closing quotes match
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Alternation" duration="1">
+        
+        <h2 is-upgraded>OR Operator</h2>
+<p><code>|</code> - matches either left or right pattern</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><code>cat|dog</code> - matches &#34;cat&#34; or &#34;dog&#34;</li>
+<li><code>(jpg|png|gif)</code> - image extensions</li>
+<li><code>\b(Mr|Mrs|Ms|Dr)\b</code> - titles</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Lookarounds (Assertions)" duration="2">
+        
+        <h2 is-upgraded>Lookahead</h2>
+<ul>
+<li><code>(?=pattern)</code> - <strong>Positive lookahead</strong>: followed by pattern <ul>
+<li><code>\d(?=px)</code> matches &#34;5&#34; in &#34;5px&#34; but not &#34;5em&#34;</li>
+</ul>
+</li>
+<li><code>(?!pattern)</code> - <strong>Negative lookahead</strong>: NOT followed by pattern <ul>
+<li><code>\d(?!px)</code> matches &#34;5&#34; in &#34;5em&#34; but not &#34;5px&#34;</li>
+</ul>
+</li>
+</ul>
+<h2 is-upgraded>Lookbehind</h2>
+<ul>
+<li><code>(?&lt;=pattern)</code> - <strong>Positive lookbehind</strong>: preceded by pattern <ul>
+<li><code>(?&lt;=\$)\d+</code> matches &#34;100&#34; in &#34;$100&#34; but not &#34;€100&#34;</li>
+</ul>
+</li>
+<li><code>(?&lt;!pattern)</code> - <strong>Negative lookbehind</strong>: NOT preceded by pattern <ul>
+<li><code>(?&lt;!\$)\d+</code> matches &#34;100&#34; in &#34;€100&#34; but not &#34;$100&#34;</li>
+</ul>
+</li>
+</ul>
+<p><strong>Complex example:</strong><code>(?&lt;=\$)\d+(?=\.00)</code> matches &#34;50&#34; in &#34;$50.00&#34;</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Flags &amp; Modifiers" duration="1">
+        
+        <h2 is-upgraded>Common Flags</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Flag</p>
+</td><td colspan="1" rowspan="1"><p>Name</p>
+</td><td colspan="1" rowspan="1"><p>Effect</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>i</code></p>
+</td><td colspan="1" rowspan="1"><p>Case-insensitive</p>
+</td><td colspan="1" rowspan="1"><p><code>/hello/i</code> matches &#34;Hello&#34;, &#34;HELLO&#34;</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>g</code></p>
+</td><td colspan="1" rowspan="1"><p>Global</p>
+</td><td colspan="1" rowspan="1"><p>Find all matches, not just first</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>m</code></p>
+</td><td colspan="1" rowspan="1"><p>Multiline</p>
+</td><td colspan="1" rowspan="1"><p><code>^</code> and <code>$</code> match line breaks</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>s</code></p>
+</td><td colspan="1" rowspan="1"><p>Dotall/Singleline</p>
+</td><td colspan="1" rowspan="1"><p><code>.</code> matches newlines too</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>u</code></p>
+</td><td colspan="1" rowspan="1"><p>Unicode</p>
+</td><td colspan="1" rowspan="1"><p>Full Unicode support</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><code>y</code></p>
+</td><td colspan="1" rowspan="1"><p>Sticky</p>
+</td><td colspan="1" rowspan="1"><p>Match from current position only</p>
+</td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practical Examples" duration="3">
+        
+        <h2 is-upgraded>Real-World Workflow Examples</h2>
+<h3 is-upgraded>Example 1: Remove Comments from AI-Generated Code</h3>
+<p>When AI tools generate code with excessive comments, use regex to clean it up instantly instead of removing them one by one.</p>
+<p><strong>Remove single-line comments (JavaScript, Java, C#, C++):</strong></p>
+<ul>
+<li>Find: <code>\s*//.*$</code></li>
+<li>Replace with empty string</li>
+</ul>
+<pre><code language="language-javascript" class="language-javascript">// Before:
+const x = 5; // Initialize variable
+const y = 10; // Another variable
+
+// After:
+const x = 5;
+const y = 10;
+</code></pre>
+<p><strong>Remove multi-line comments:</strong></p>
+<ul>
+<li>Find: <code>/\*[\s\S]*?\*/</code></li>
+<li>Replace with empty string</li>
+</ul>
+<pre><code language="language-javascript" class="language-javascript">// Before:
+/* This is a
+   multi-line comment
+   explaining the code */
+function hello() {}
+
+// After:
+function hello() {}
+</code></pre>
+<p><strong>Remove Python comments:</strong></p>
+<ul>
+<li>Find: <code>\s*#.*$</code></li>
+<li>Replace with empty string</li>
+</ul>
+<pre><code language="language-python" class="language-python"># Before:
+x = 5  # Initialize variable
+y = 10  # Another variable
+
+# After:
+x = 5
+y = 10
+</code></pre>
+<h3 is-upgraded>Example 2: Clean HTML by Removing Class and Style Attributes</h3>
+<p>Remove inline styling and classes to get clean, semantic HTML structure.</p>
+<p><strong>Remove class and style attributes:</strong></p>
+<ul>
+<li>Find: <code>\s*(class|style)=([&#34;&#39;]).*?\2</code></li>
+<li>Replace with empty string</li>
+</ul>
+<pre><code language="language-html:" class="language-html:">&lt;!-- Before: --&gt;
+&lt;div class=&#34;container mt-5&#34; style=&#34;color: red;&#34;&gt;
+  &lt;p class=&#34;text-center&#34; style=&#34;font-size: 14px;&#34;&gt;Hello World&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- After: --&gt;
+&lt;div&gt;
+  &lt;p&gt;Hello World&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 is-upgraded>Find &amp; Replace Examples</h2>
+<p><strong>Remove extra spaces:</strong></p>
+<ul>
+<li>Find: <code>\s+</code></li>
+<li>Replace:   (single space)</li>
+</ul>
+<p><strong>Swap names:</strong></p>
+<ul>
+<li>Find: <code>(\w+),\s*(\w+)</code></li>
+<li>Replace: <code>$2 $1</code></li>
+</ul>
+<h2 is-upgraded>LeetCode Problems Solved with Regex</h2>
+<p>Regex can be surprisingly powerful for solving coding challenges. Here are some LeetCode problems solved elegantly with regex.</p>
+<h3 is-upgraded>Problem 1: Decode String (LeetCode #394)</h3>
+<p><strong>Problem:</strong> Given an encoded string, return its decoded string. The encoding rule is: <code>k[encoded_string]</code>, where the <code>encoded_string</code> inside the square brackets is being repeated exactly <code>k</code> times.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Input: <code>&#34;3[a]2[bc]&#34;</code> → Output: <code>&#34;aaabcbc&#34;</code></li>
+<li>Input: <code>&#34;3[a2[c]]&#34;</code> → Output: <code>&#34;accaccacc&#34;</code></li>
+<li>Input: <code>&#34;2[abc]3[cd]ef&#34;</code> → Output: <code>&#34;abcabccdcdcdef&#34;</code></li>
+</ul>
+<p><strong>Regex Solution:</strong></p>
+<pre><code language="language-python" class="language-python">import re
+
+class Solution:
+    def decodeString(self, s: str) -&gt; str:
+        pattern = r&#39;(\d+)\[([a-z]+)\]&#39;
+
+        while re.search(pattern, s):
+            s = re.sub(
+                pattern,
+                lambda m: int(m.group(1)) * m.group(2),
+                s
+            )
+
+        return s
+</code></pre>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Pattern <code>(\d+)\[([a-z]+)\]</code> matches number + <code>[letters]</code></li>
+<li>Group 1: the number (<code>k</code>)</li>
+<li>Group 2: the letters to repeat</li>
+<li>Lambda function multiplies the string by the number</li>
+<li>Loop handles nested patterns from inside out</li>
+</ul>
+<h3 is-upgraded>Problem 2: Valid Parentheses (LeetCode #20)</h3>
+<p><strong>Problem:</strong> Given a string containing just the characters <code>&#39;(&#39;, &#39;)&#39;, &#39;{&#39;, &#39;}&#39;, &#39;[&#39; and &#39;]&#39;</code>, determine if the input string is valid (properly balanced and nested).</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Input: <code>&#34;()&#34;</code> → Output: <code>true</code></li>
+<li>Input: <code>&#34;()[]{}&#34;</code> → Output: <code>true</code></li>
+<li>Input: <code>&#34;(]&#34;</code> → Output: <code>false</code></li>
+<li>Input: <code>&#34;([)]&#34;</code> → Output: <code>false</code></li>
+</ul>
+<p><strong>Regex Solution:</strong></p>
+<pre><code language="language-python" class="language-python">import re
+
+class Solution:
+    def isValid(self, s: str) -&gt; bool:
+        if len(s) &lt;= 1:
+            return False
+
+        pattern = r&#39;\(\)|\[\]|\{\}&#39;
+
+        while re.search(pattern, s):
+            s = re.sub(pattern, &#39;&#39;, s)
+
+        return s == &#39;&#39;
+</code></pre>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Pattern <code>\(\)|\[\]|\{\}</code> matches any valid pair: <code>()</code>, <code>[]</code>, or <code>{}</code></li>
+<li>Repeatedly remove valid pairs until none remain</li>
+<li>If string is empty, all brackets were properly matched</li>
+<li>If anything remains, brackets were invalid</li>
+</ul>
+<h3 is-upgraded>Problem 3: Valid Palindrome (LeetCode #125)</h3>
+<p><strong>Problem:</strong> A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Input: <code>&#34;A man, a plan, a canal: Panama&#34;</code> → Output: <code>true</code></li>
+<li>Input: <code>&#34;race a car&#34;</code> → Output: <code>false</code></li>
+</ul>
+<p><strong>Regex Solution:</strong></p>
+<pre><code language="language-python" class="language-python">import re
+
+class Solution:
+    def isPalindrome(self, s: str) -&gt; bool:
+        cleaned = re.sub(r&#39;[^\w]&#39;, &#39;&#39;, s).lower()
+        return cleaned == cleaned[::-1]
+</code></pre>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Pattern <code>[^\w]</code> matches any non-word character (not letter/digit/underscore)</li>
+<li><code>re.sub()</code> removes all non-alphanumeric characters</li>
+<li><code>.lower()</code> converts to lowercase</li>
+<li>Compare with reversed string <code>[::-1]</code></li>
+</ul>
+<h3 is-upgraded>Problem 4: Word Compression</h3>
+<p><strong>Problem:</strong> Remove groups of exactly <code>k</code> consecutive equal characters repeatedly until no more operations are possible.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Input: <code>word = &#34;abbcccb&#34;</code>, <code>k = 3</code></li>
+<li>Remove <code>&#34;ccc&#34;</code>: <code>&#34;abbcccb&#34;</code> → <code>&#34;abbb&#34;</code></li>
+<li>Remove <code>&#34;bbb&#34;</code>: <code>&#34;abbb&#34;</code> → <code>&#34;a&#34;</code></li>
+<li>Output: <code>&#34;a&#34;</code></li>
+</ul>
+<p><strong>Regex Solution:</strong></p>
+<pre><code language="language-javascript" class="language-javascript">function compressWord(word, k) {
+  const regex = new RegExp(`(.)\\1{${k - 1}}`, &#34;g&#34;);
+  
+  while (regex.test(word)) {
+    word = word.replace(regex, &#34;&#34;);
+  }
+  
+  return word;
+}
+</code></pre>
+<p><strong>How it works:</strong></p>
+<ul>
+<li>Pattern <code>(.)\1{k-1}</code> matches exactly <code>k</code> consecutive identical characters <ul>
+<li><code>(.)</code> captures any character</li>
+<li><code>\1{k-1}</code> backreferences that character exactly <code>k-1</code> more times</li>
+<li>Total: <code>k</code> consecutive matches</li>
+</ul>
+</li>
+<li>Dynamic regex construction with template literal</li>
+<li>Loop while pattern matches exist, replacing them</li>
+<li><code>regex.lastIndex = 0</code> resets the regex index for the next iteration</li>
+<li>Example with <code>k=3</code>: <code>(.)\1{2}</code> matches 3 identical chars like <code>&#34;aaa&#34;</code> or <code>&#34;bbb&#34;</code></li>
+</ul>
+<p><strong>Key insight:</strong> Backreference <code>\1</code> ensures all characters are identical!</p>
+<h2 is-upgraded>Regex in Popular Web Frameworks</h2>
+<p>Many modern web frameworks use regex internally for routing, validation, and pattern matching. Here are real-world examples from production frameworks.</p>
+<h3 is-upgraded>FastAPI / Starlette - Path Parameter Matching</h3>
+<p>FastAPI (built on Starlette) uses regex to parse path parameters from route definitions.</p>
+<p><strong>Internal Implementation:</strong></p>
+<p>From <a href="https://github.com/Kludex/starlette/blob/c14d0f778010940ac40f97dbc23d8dbf99e87e23/starlette/routing.py#L107" target="_blank">Starlette&#39;s routing.py</a>:</p>
+<pre><code language="language-python" class="language-python">PARAM_REGEX = re.compile(&#34;{([a-zA-Z_][a-zA-Z0-9_]*)(:[a-zA-Z_][a-zA-Z0-9_]*)?}&#34;)
+</code></pre>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Matches route parameters like <code>{user_id}</code> or <code>{user_id:path}</code></li>
+<li>Group 1: <code>([a-zA-Z_][a-zA-Z0-9_]*)</code> - parameter name (must start with letter or underscore)</li>
+<li>Group 2: <code>(:[a-zA-Z_][a-zA-Z0-9_]*)?</code> - optional type converter (like <code>:path</code>, <code>:int</code>)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code language="language-python" class="language-python">@app.get(&#34;/users/{user_id}/posts/{post_id:int}&#34;)
+# Starlette extracts: user_id (string), post_id (int)
+</code></pre>
+<h3 is-upgraded>FastAPI - Pydantic Regex Validation</h3>
+<p>FastAPI uses Pydantic for request validation, which supports regex constraints.</p>
+<p><strong>Field-level validation:</strong></p>
+<pre><code language="language-python" class="language-python">from pydantic import BaseModel, Field
+
+class User(BaseModel):
+    # Name must be uppercase letters only
+    name: str = Field(pattern=&#34;^[A-Z]+$&#34;)
+    
+    # Email validation
+    email: str = Field(pattern=r&#34;^[\w\.-]+@[\w\.-]+\.\w+$&#34;)
+    
+    # Phone number (US format)
+    phone: str = Field(pattern=r&#34;^\d{3}-\d{3}-\d{4}$&#34;)
+</code></pre>
+<p><strong>Query parameter validation:</strong></p>
+<pre><code language="language-python" class="language-python">from fastapi import Query
+
+@app.get(&#34;/items/&#34;)
+def read_items(
+    q: str = Query(..., pattern=&#34;^fixedquery$&#34;),  # Must match exactly
+    tag: str = Query(None, pattern=&#34;^[a-z0-9-]+$&#34;)  # Lowercase alphanumeric with hyphens
+):
+    return {&#34;q&#34;: q, &#34;tag&#34;: tag}
+</code></pre>
+<h3 is-upgraded>Next.js - Route Matching</h3>
+<p>Next.js uses a file-system based routing, but internally compiles routes into regex patterns for matching.</p>
+<p><strong>Dynamic Routes:</strong></p>
+<p>File structure:</p>
+<pre><code>pages/
+  users/
+    [id].js          → Matches /users/123, /users/abc
+    [...slug].js     → Matches /users/a/b/c (catch-all)
+</code></pre>
+<p><strong>Internal regex compilation:</strong></p>
+<p>Next.js converts these to regex patterns like:</p>
+<pre><code language="language-javascript" class="language-javascript">// [id].js becomes:
+/^\/users\/([^/]+?)(?:\/)?$/
+
+// [...slug].js becomes:
+/^\/users\/(.+?)(?:\/)?$/
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/native-shim.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build/codelab-elements.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+
+</body>
+</html>

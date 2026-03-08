@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/codelab-elements/build",
+  "mainga4": "G-XXXXXXXXXX",
+  "updated": "2026-03-08T17:54:08Z",
+  "id": "regex-complete-crash-course",
+  "duration": 18,
+  "title": "Regular Expressions: Complete Crash Course",
+  "authors": [
+    "Kamil Hassan(https://github.com/Bit-Blazer)"
+  ],
+  "summary": "A comprehensive 20-minute crash course covering all essential regex concepts",
+  "source": "codelabs/regex-complete-guide.md",
+  "theme": "",
+  "status": "Published",
+  "categories": [
+    "regex",
+    "programming",
+    "tutorial"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback_link": "https://github.com/Bit-Blazer/regex-codelab/issues/new",
+  "home_url": "/codelab-tools/"
+}
