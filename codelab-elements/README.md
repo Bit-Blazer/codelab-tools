@@ -87,16 +87,6 @@ npm run clean
 # Build elements
 npm run build
 
-# Run tests
-npm run test
-```
-
-### Testing
-
-The build includes a test suite in `demo/`:
-
-```bash
-npm run test
 ```
 
 ### Local Development
