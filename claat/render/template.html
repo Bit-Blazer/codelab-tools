@@ -29,7 +29,6 @@ the License.
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="{{.Prefix}}/codelab-elements.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/monokai.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css">
   <style>
     .success {
       color: #1e8e3e;
@@ -43,7 +42,7 @@ the License.
   <google-codelab-analytics ga4id="{{.GlobalGA4}}"></google-codelab-analytics>
   <google-codelab codelab-ga4id="{{.Meta.GA4}}"
                   id="{{.Meta.ID}}"
-                  title="{{.Meta.Title}}"
+                  codelab-title="{{.Meta.Title}}"
                   environment="{{index .Env}}"
                   feedback-link="{{.Meta.FeedbackLink}}"
                   {{if .Meta.HomeURL}}home-url="{{.Meta.HomeURL}}"{{end}}>
@@ -53,8 +52,7 @@ the License.
         <google-codelab-about 
                       codelab-title="{{$.Meta.Title}}"
                       {{if $.Meta.Authors}}authors='{{join $.Meta.Authors ", "}}'{{end}}
-                      {{if $.Updated}}last-updated="{{$.Updated}}"{{end}}
-                      duration="{{$.Meta.Duration}}">
+                      {{if $.Updated}}last-updated="{{$.Updated}}"{{end}}>
         </google-codelab-about>
         {{end}}
         {{.Content | renderHTML $.Context}}
@@ -65,10 +63,8 @@ the License.
   <script src="{{.Prefix}}/native-shim.js"></script>
   <script src="{{.Prefix}}/codelab-elements.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
-  <script src="https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
   <script>
     hljs.highlightAll();
-    hljs.addPlugin(new CopyButtonPlugin({ autohide: false}));
   </script>
 
 </body>

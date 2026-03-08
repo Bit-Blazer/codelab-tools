@@ -203,6 +203,9 @@ class CodelabStep extends HTMLElement {
       }
       this.eventHandler_.listen(
         el, 'copy', () => this.handleSnippetCopy_(el));
+      
+      // Add built-in copy button
+      this.addCopyButton_(el);
     });
 
     // Re-insert the about element before the instructions.
@@ -213,6 +216,100 @@ class CodelabStep extends HTMLElement {
     dom.appendChild(this, this.instructions_);
 
     this.hasSetup_ = true;
+  }
+
+  /**
+   * Adds a copy button to a code element.
+   * @param {!Element} codeEl The code element to add the button to.
+   * @private
+   */
+  addCopyButton_(codeEl) {
+    const preEl = codeEl.parentElement;
+    if (!preEl || preEl.tagName !== 'PRE') {
+      return;
+    }
+
+    // Create copy button with Material Icons
+    const copyButton = dom.createElement('button');
+    copyButton.classList.add('copy-code-button');
+    copyButton.setAttribute('type', 'button');
+    copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+    
+    const icon = dom.createElement('i');
+    icon.classList.add('material-icons');
+    icon.textContent = 'content_copy';
+    dom.appendChild(copyButton, icon);
+
+    // Add button to pre element
+    preEl.style.position = 'relative';
+    dom.appendChild(preEl, copyButton);
+
+    // Handle copy button click
+    this.eventHandler_.listen(copyButton, 'click', () => {
+      const textToCopy = codeEl.textContent || '';
+      
+      // Use modern Clipboard API if available
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          this.showCopyFeedback_(copyButton, true);
+        }).catch(() => {
+          this.showCopyFeedback_(copyButton, false);
+        });
+      } else {
+        // Fallback for older browsers
+        const success = this.fallbackCopyToClipboard_(textToCopy);
+        this.showCopyFeedback_(copyButton, success);
+      }
+
+      // Fire analytics event
+      this.handleSnippetCopy_(codeEl);
+    });
+  }
+
+  /**
+   * Fallback method to copy text to clipboard for older browsers.
+   * @param {string} text The text to copy.
+   * @return {boolean} Whether the copy was successful.
+   * @private
+   */
+  fallbackCopyToClipboard_(text) {
+    const textArea = dom.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    let success = false;
+    try {
+      success = document.execCommand('copy');
+    } catch (err) {
+      success = false;
+    }
+
+    document.body.removeChild(textArea);
+    return success;
+  }
+
+  /**
+   * Shows visual feedback after copy operation.
+   * @param {!Element} button The copy button element.
+   * @param {boolean} success Whether the copy was successful.
+   * @private
+   */
+  showCopyFeedback_(button, success) {
+    const icon = button.querySelector('.material-icons');
+    const originalIcon = icon.textContent;
+    icon.textContent = success ? 'check' : 'close';
+    button.classList.add(success ? 'copied' : 'copy-failed');
+
+    setTimeout(() => {
+      icon.textContent = originalIcon;
+      button.classList.remove('copied', 'copy-failed');
+    }, 1000);
   }
 
   /**

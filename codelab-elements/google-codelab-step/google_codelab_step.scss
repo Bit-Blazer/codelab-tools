@@ -348,6 +348,67 @@ google-codelab-step .youtube-video {
   max-height: 51vw;
 }
 
+// Copy button styles
+google-codelab-step .instructions pre {
+  position: relative;
+}
+
+google-codelab-step .instructions .copy-code-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-family: 'Google Sans', Arial, sans-serif;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: $google-material-grey-700;
+  border: 1px solid $google-material-grey-300;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .material-icons {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  &:hover {
+    background-color: $google-material-grey-100;
+    border-color: $google-material-grey-600;
+    color: $google-material-grey-900;
+  }
+
+  &.copied {
+    background-color: $google-material-green-600;
+    color: white;
+    border-color: $google-material-green-600;
+  }
+
+  &.copy-failed {
+    background-color: #D93025;
+    color: white;
+    border-color: #D93025;
+  }
+}
+
+// Dark theme support
+[data-theme="dark"] google-codelab-step .instructions .copy-code-button {
+  background-color: rgba(60, 64, 67, 0.9);
+  color: $google-material-grey-300;
+  border-color: $google-material-grey-700;
+
+  &:hover {
+    background-color: $google-material-grey-800;
+    border-color: $google-material-grey-600;
+    color: white;
+  }
+}
+
 google-codelab-step .embedded-iframe {
   display: flex;
   margin: auto;

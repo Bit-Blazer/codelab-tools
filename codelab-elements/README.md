@@ -38,10 +38,17 @@ This directory contains the client-side JavaScript and CSS for rendering codelab
   - Sends analytics events
 
 - **`google-codelab-analytics`** - Google Analytics integration
+
   - Tracks page views
   - Records user interactions
   - Monitors survey responses
   - Measures completion rates
+
+- **`google-codelab-catalog`** - Searchable catalog browser for codelabs
+  - Displays codelabs in a filterable grid
+  - Search functionality
+  - Filter by categories, tags, and authors
+  - Sort by title, date, or duration
 
 ## Build System
 
