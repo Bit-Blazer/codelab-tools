@@ -41,35 +41,35 @@ const regex2 = new RegExp('pattern', 'flags');  // Constructor
 
 **Key methods:**
 
-- **`test()`** - Returns true/false if pattern matches
+**`test()`** - Returns true/false if pattern matches
 
-  ```javascript
-  /\d+/.test("abc123"); // true
-  ```
+```javascript
+/\d+/.test("abc123"); // true
+```
 
-- **`exec()`** - Returns match details or null
+**`exec()`** - Returns match details or null
 
-  ```javascript
-  /\d+/.exec("abc123"); // ['123', index: 3, ...]
-  ```
+```javascript
+/\d+/.exec("abc123"); // ['123', index: 3, ...]
+```
 
-- **`replace()`** - Find and replace
+**`replace()`** - Find and replace
 
-  ```javascript
-  "hello".replace(/l/g, "L"); // 'heLLo'
-  ```
+```javascript
+"hello".replace(/l/g, "L"); // 'heLLo'
+```
 
-- **`search()`** - Returns index of first match
+**`search()`** - Returns index of first match
 
-  ```javascript
-  "abc123".search(/\d/); // 3
-  ```
+```javascript
+"abc123".search(/\d/); // 3
+```
 
-- **`split()`** - Split string by pattern
+**`split()`** - Split string by pattern
 
-  ```javascript
-  "a1b2c3".split(/\d/); // ['a', 'b', 'c', '']
-  ```
+```javascript
+"a1b2c3".split(/\d/); // ['a', 'b', 'c', '']
+```
 
 ### Using Regex in Python
 
@@ -83,48 +83,48 @@ pattern = re.compile(r'pattern', flags)  # Compiled (recommended)
 
 **Key methods:**
 
-- **`re.search()`** - Find first match anywhere
+**`re.search()`** - Find first match anywhere
 
-  ```python
-  re.search(r'\d+', 'abc123')  # Match object
-  ```
+```python
+re.search(r'\d+', 'abc123')  # Match object
+```
 
-- **`re.match()`** - Match from beginning only
+**`re.match()`** - Match from beginning only
 
-  ```python
-  re.match(r'\d+', '123abc')  # Match object
-  ```
+```python
+re.match(r'\d+', '123abc')  # Match object
+```
 
-- **`re.fullmatch()`** - Match entire string
+**`re.fullmatch()`** - Match entire string
 
-  ```python
-  re.fullmatch(r'\d+', '123')  # Match object
-  ```
+```python
+re.fullmatch(r'\d+', '123')  # Match object
+```
 
-- **`re.findall()`** - Return list of all matches
+**`re.findall()`** - Return list of all matches
 
-  ```python
-  re.findall(r'\d+', 'a1b2c3')  # ['1', '2', '3']
-  ```
+```python
+re.findall(r'\d+', 'a1b2c3')  # ['1', '2', '3']
+```
 
-- **`re.finditer()`** - Iterator of match objects
+**`re.finditer()`** - Iterator of match objects
 
-  ```python
-  for m in re.finditer(r'\d+', 'a1b2'):
-      print(m.group())
-  ```
+```python
+for m in re.finditer(r'\d+', 'a1b2'):
+    print(m.group())
+```
 
-- **`re.sub()`** - Find and replace
+**`re.sub()`** - Find and replace
 
-  ```python
-  re.sub(r'\d', '#', 'a1b2')  # 'a#b#'
-  ```
+```python
+re.sub(r'\d', '#', 'a1b2')  # 'a#b#'
+```
 
-- **`re.split()`** - Split by pattern
+**`re.split()`** - Split by pattern
 
-  ```python
-  re.split(r'\d', 'a1b2c')  # ['a', 'b', 'c']
-  ```
+```python
+re.split(r'\d', 'a1b2c')  # ['a', 'b', 'c']
+```
 
 **Match object methods:**
 
@@ -673,11 +673,11 @@ class Solution:
 ```javascript
 function compressWord(word, k) {
   const regex = new RegExp(`(.)\\1{${k - 1}}`, "g");
-  
+
   while (regex.test(word)) {
     word = word.replace(regex, "");
   }
-  
+
   return word;
 }
 ```
@@ -714,11 +714,13 @@ PARAM_REGEX = re.compile("{([a-zA-Z_][a-zA-Z0-9_]*)(:[a-zA-Z_][a-zA-Z0-9_]*)?}")
 ```
 
 **What it does:**
+
 - Matches route parameters like `{user_id}` or `{user_id:path}`
 - Group 1: `([a-zA-Z_][a-zA-Z0-9_]*)` - parameter name (must start with letter or underscore)
 - Group 2: `(:[a-zA-Z_][a-zA-Z0-9_]*)?` - optional type converter (like `:path`, `:int`)
 
 **Example:**
+
 ```python
 @app.get("/users/{user_id}/posts/{post_id:int}")
 # Starlette extracts: user_id (string), post_id (int)
@@ -736,10 +738,10 @@ from pydantic import BaseModel, Field
 class User(BaseModel):
     # Name must be uppercase letters only
     name: str = Field(pattern="^[A-Z]+$")
-    
+
     # Email validation
     email: str = Field(pattern=r"^[\w\.-]+@[\w\.-]+\.\w+$")
-    
+
     # Phone number (US format)
     phone: str = Field(pattern=r"^\d{3}-\d{3}-\d{4}$")
 ```
@@ -764,6 +766,7 @@ Next.js uses a file-system based routing, but internally compiles routes into re
 **Dynamic Routes:**
 
 File structure:
+
 ```
 pages/
   users/
@@ -774,6 +777,7 @@ pages/
 **Internal regex compilation:**
 
 Next.js converts these to regex patterns like:
+
 ```javascript
 // [id].js becomes:
 /^\/users\/([^/]+?)(?:\/)?$/

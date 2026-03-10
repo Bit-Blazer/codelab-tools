@@ -34,36 +34,25 @@ jobs:
           go build -o ../claat-bin ./main.go
           chmod +x ../claat-bin
 
-      - name: Prepare temp folder
+      - name: Export codelabs
         run: |
           mkdir -p temp
 
-          # Copy source markdown files
-          cp -r sample-codelabs temp/codelabs
-
-          # Copy catalog files to root
-          cp -r catalog/* temp/
-
-      - name: Export codelabs
-        working-directory: temp
-        run: |
-          # Export all markdown files to temp root
-          for file in codelabs/*.md; do
+          # Export all markdown files
+          for file in sample-codelabs/*.md; do
             if [ -f "$file" ]; then
               echo "Exporting $file..."
-              ../claat-bin export -o . "$file"
+              ./claat-bin export -o temp "$file"
             fi
           done
 
-          echo "Exported codelabs:"
-          ls -la
-
-      - name: Build index
-        working-directory: temp
+      - name: Build catalog site
         run: |
-          node build-index.js . codelabs.json
-          echo "Catalog index:"
-          cat codelabs.json
+          echo "Generating catalog site..."
+          ./claat-bin catalog -o temp -title "Codelab Tools" -description "Interactive codelabs and tutorials"
+          
+          echo "Catalog contents:"
+          ls -la temp
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
@@ -71,4 +60,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./temp
           publish_branch: gh-pages
-          force_orphan: true

@@ -84,6 +84,8 @@ This is a paragraph with multiple sentences. It contains regular text that spans
 
 This is a second paragraph separated by a blank line.
 
+This is a normal line with an `<html>` tag to test raw HTML Escape.
+
 ## Lists and Structure
 
 Duration: 4:00
