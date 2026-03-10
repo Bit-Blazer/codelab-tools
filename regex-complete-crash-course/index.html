@@ -38,7 +38,7 @@
         <google-codelab-about 
                       codelab-title="Regular Expressions: Complete Crash Course"
                       authors='Kamil Hassan(https://github.com/Bit-Blazer)'
-                      last-updated="2026-03-08T17:54:08Z">
+                      last-updated="2026-03-10T04:05:18Z">
         </google-codelab-about>
         
         <h2 is-upgraded>What is Regex?</h2>
@@ -58,28 +58,21 @@
 const regex2 = new RegExp(&#39;pattern&#39;, &#39;flags&#39;);  // Constructor
 </code></pre>
 <p><strong>Key methods:</strong></p>
-<ul>
-<li><p><strong><code>test()</code></strong> - Returns true/false if pattern matches</p>
+<p><strong><code>test()</code></strong> - Returns true/false if pattern matches</p>
 <pre><code language="language-javascript" class="language-javascript">/\d+/.test(&#34;abc123&#34;); // true
 </code></pre>
-</li>
-<li><p><strong><code>exec()</code></strong> - Returns match details or null</p>
+<p><strong><code>exec()</code></strong> - Returns match details or null</p>
 <pre><code language="language-javascript" class="language-javascript">/\d+/.exec(&#34;abc123&#34;); // [&#39;123&#39;, index: 3, ...]
 </code></pre>
-</li>
-<li><p><strong><code>replace()</code></strong> - Find and replace</p>
+<p><strong><code>replace()</code></strong> - Find and replace</p>
 <pre><code language="language-javascript" class="language-javascript">&#34;hello&#34;.replace(/l/g, &#34;L&#34;); // &#39;heLLo&#39;
 </code></pre>
-</li>
-<li><p><strong><code>search()</code></strong> - Returns index of first match</p>
+<p><strong><code>search()</code></strong> - Returns index of first match</p>
 <pre><code language="language-javascript" class="language-javascript">&#34;abc123&#34;.search(/\d/); // 3
 </code></pre>
-</li>
-<li><p><strong><code>split()</code></strong> - Split string by pattern</p>
+<p><strong><code>split()</code></strong> - Split string by pattern</p>
 <pre><code language="language-javascript" class="language-javascript">&#34;a1b2c3&#34;.split(/\d/); // [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;&#39;]
 </code></pre>
-</li>
-</ul>
 <h2 is-upgraded>Using Regex in Python</h2>
 <p><strong>Creating patterns:</strong></p>
 <pre><code language="language-python" class="language-python">import re
@@ -87,37 +80,28 @@ pattern = re.compile(r&#39;pattern&#39;, flags)  # Compiled (recommended)
 # Or use directly in functions
 </code></pre>
 <p><strong>Key methods:</strong></p>
-<ul>
-<li><p><strong><code>re.search()</code></strong> - Find first match anywhere</p>
+<p><strong><code>re.search()</code></strong> - Find first match anywhere</p>
 <pre><code language="language-python" class="language-python">re.search(r&#39;\d+&#39;, &#39;abc123&#39;)  # Match object
 </code></pre>
-</li>
-<li><p><strong><code>re.match()</code></strong> - Match from beginning only</p>
+<p><strong><code>re.match()</code></strong> - Match from beginning only</p>
 <pre><code language="language-python" class="language-python">re.match(r&#39;\d+&#39;, &#39;123abc&#39;)  # Match object
 </code></pre>
-</li>
-<li><p><strong><code>re.fullmatch()</code></strong> - Match entire string</p>
+<p><strong><code>re.fullmatch()</code></strong> - Match entire string</p>
 <pre><code language="language-python" class="language-python">re.fullmatch(r&#39;\d+&#39;, &#39;123&#39;)  # Match object
 </code></pre>
-</li>
-<li><p><strong><code>re.findall()</code></strong> - Return list of all matches</p>
+<p><strong><code>re.findall()</code></strong> - Return list of all matches</p>
 <pre><code language="language-python" class="language-python">re.findall(r&#39;\d+&#39;, &#39;a1b2c3&#39;)  # [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]
 </code></pre>
-</li>
-<li><p><strong><code>re.finditer()</code></strong> - Iterator of match objects</p>
+<p><strong><code>re.finditer()</code></strong> - Iterator of match objects</p>
 <pre><code language="language-python" class="language-python">for m in re.finditer(r&#39;\d+&#39;, &#39;a1b2&#39;):
     print(m.group())
 </code></pre>
-</li>
-<li><p><strong><code>re.sub()</code></strong> - Find and replace</p>
+<p><strong><code>re.sub()</code></strong> - Find and replace</p>
 <pre><code language="language-python" class="language-python">re.sub(r&#39;\d&#39;, &#39;#&#39;, &#39;a1b2&#39;)  # &#39;a#b#&#39;
 </code></pre>
-</li>
-<li><p><strong><code>re.split()</code></strong> - Split by pattern</p>
+<p><strong><code>re.split()</code></strong> - Split by pattern</p>
 <pre><code language="language-python" class="language-python">re.split(r&#39;\d&#39;, &#39;a1b2c&#39;)  # [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
 </code></pre>
-</li>
-</ul>
 <p><strong>Match object methods:</strong></p>
 <ul>
 <li><code>group()</code> - Get matched text</li>
@@ -652,11 +636,11 @@ class Solution:
 <p><strong>Regex Solution:</strong></p>
 <pre><code language="language-javascript" class="language-javascript">function compressWord(word, k) {
   const regex = new RegExp(`(.)\\1{${k - 1}}`, &#34;g&#34;);
-  
+
   while (regex.test(word)) {
     word = word.replace(regex, &#34;&#34;);
   }
-  
+
   return word;
 }
 </code></pre>
@@ -700,10 +684,10 @@ class Solution:
 class User(BaseModel):
     # Name must be uppercase letters only
     name: str = Field(pattern=&#34;^[A-Z]+$&#34;)
-    
+
     # Email validation
     email: str = Field(pattern=r&#34;^[\w\.-]+@[\w\.-]+\.\w+$&#34;)
-    
+
     # Phone number (US format)
     phone: str = Field(pattern=r&#34;^\d{3}-\d{3}-\d{4}$&#34;)
 </code></pre>
