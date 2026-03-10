@@ -20,7 +20,7 @@ const CATALOG_DESCRIPTION_ATTR = 'catalog-description';
 const ITEMS_PER_PAGE_ATTR = 'items-per-page';
 
 /** @const {string} */
-const THEME_STORAGE_KEY = 'codelab-catalog-theme';
+const THEME_STORAGE_KEY = 'codelab-theme';
 
 /**
  * @extends {HTMLElement}
