@@ -49,8 +49,8 @@ jobs:
       - name: Build catalog site
         run: |
           echo "Generating catalog site..."
-          ./claat-bin catalog -o temp -title "Codelab Tools" -description "Interactive codelabs and tutorials"
-          
+          ./claat-bin catalog -o temp
+
           echo "Catalog contents:"
           ls -la temp
 
