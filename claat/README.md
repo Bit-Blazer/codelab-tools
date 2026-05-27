@@ -22,7 +22,46 @@ go install github.com/Bit-Blazer/codelab-tools/claat@latest
 
 1. Install [Go](https://golang.org/dl/)
 2. Navigate to the claat directory
-3. Run `make` to build the binary
+3. Run `make release` to build cross-platform binaries
+
+## WebAssembly Engine (Browser Integration)
+
+CLAAT can be compiled to WebAssembly (WASM) to run directly inside a browser natively. This creates a lightweight rendering engine perfect for live markdown previews in web editors without any server backend.
+
+You can download the pre-compiled `claat-wasm.zip` directly from the [Releases page](https://github.com/Bit-Blazer/codelab-tools/releases/latest) or build it manually:
+
+```bash
+make build-wasm
+```
+
+This drops `claat.wasm` and `wasm_exec.js` into the `wasm/` folder.
+
+**Using it in the browser:**
+
+```javascript
+// 1. Load the Go WASM bridge script from jsDelivr
+const script = document.createElement("script");
+script.src =
+  "https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/claat/wasm/wasm_exec.js";
+document.head.appendChild(script);
+
+script.onload = async () => {
+  // 2. Initialize the engine
+  const go = new Go();
+  const result = await WebAssembly.instantiateStreaming(
+    fetch(
+      "https://cdn.jsdelivr.net/gh/Bit-Blazer/codelab-tools@main/claat/wasm/claat.wasm"
+    ),
+    go.importObject
+  );
+  go.run(result.instance);
+
+  // 3. Render Markdown synchronously anywhere in your app:
+  const htmlOutput = window.codelabRender(
+    "# My Codelab\n\n## Step 1\nHello World!"
+  );
+};
+```
 
 ## Commands
 

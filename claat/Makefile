@@ -40,5 +40,12 @@ release:
 			(cd $(OUTDIR) && tar -czf $$FOLDER.tar.gz $$FOLDER); \
 		fi; \
 	done
+	$(MAKE) build-wasm
+	(cd wasm && zip -r ../$(OUTDIR)/$(APP)-v$(VERSION)-wasm.zip claat.wasm wasm_exec.js)
 	echo $(VERSION)-$(DATE)-$(SHA) > $(OUTDIR)/VERSION
 	cd $(OUTDIR) && sha256sum $(APP)-*.tar.gz $(APP)-*.zip > checksums.txt
+
+build-wasm:
+	mkdir -p wasm
+	GOOS=js GOARCH=wasm go build -ldflags "-X main.version=$(VERSION)-$(DATE)-$(SHA) -s -w" -o wasm/claat.wasm ./wasm
+	cp "$(shell go env GOROOT)/lib/wasm/wasm_exec.js" wasm/wasm_exec.js
